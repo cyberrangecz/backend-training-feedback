@@ -1,0 +1,141 @@
+{
+    "aliases": [],
+    "arguments": [
+        {
+            "argument-set-id": 0,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": "(.*)",
+                    "placement": "after"
+                },
+                {
+                    "order": 1,
+                    "value": "(.*)",
+                    "placement": "after"
+                }
+            ]
+        },
+        {
+            "argument-set-id": 1,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": "(.*)",
+                    "placement": "after"
+                }
+            ]
+        }
+    ],
+    "options": [
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--help"
+            ],
+            "short-names": [],
+            "valid-with": []
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--exec-path"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--html-path"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--paginate"
+            ],
+            "short-names": [
+                "p"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--no-pager"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--git-dir"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--work-tree"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--bare"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--no-replace-objects"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,422 @@
+{
+    "aliases": [],
+    "arguments": [
+        {
+            "argument-set-id": 0,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": "(.*)",
+                    "placement": "before"
+                }
+            ]
+        },
+        {
+            "argument-set-id": 1,
+            "argument-set-values": []
+        },
+        {
+            "argument-set-id": 2,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": "(.*)",
+                    "placement": "before"
+                },
+                {
+                    "order": 1,
+                    "value": "(.*)",
+                    "placement": "before"
+                },
+                {
+                    "order": 0,
+                    "value": "(.*)",
+                    "placement": "before"
+                }
+            ]
+        },
+        {
+            "argument-set-id": 3,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": "(.*)",
+                    "placement": "before"
+                },
+                {
+                    "order": 0,
+                    "value": "(.*)",
+                    "placement": "before"
+                }
+            ]
+        }
+    ],
+    "options": [
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "interface"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "up"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "down"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "arp"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "promisc"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "allmulti"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "[=]^\\d{5}$",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "metric"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "[=]^\\d{5}$",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "mtu"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "dstaddr"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "netmask"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "add"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "del"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "tunnel"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "irq"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "io_addr"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "mem_start"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "media"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": true
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "broadcast"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": true
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "pointopoint"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "hw"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "multicast"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "address"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "txqueuelen"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "Site"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "Library"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "Toys"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,691 @@
+{
+    "aliases": [],
+    "arguments": [
+        {
+            "argument-set-id": 0,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": ".*",
+                    "placement": "after"
+                },
+                {
+                    "order": -2,
+                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+                    "placement": "after"
+                }
+            ]
+        },
+        {
+            "argument-set-id": 1,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": ".*",
+                    "placement": "after"
+                }
+            ]
+        },
+        {
+            "argument-set-id": 2,
+            "argument-set-values": [
+                {
+                    "order": -2,
+                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+                    "placement": "after"
+                }
+            ]
+        },
+        {
+            "argument-set-id": 3,
+            "argument-set-values": []
+        }
+    ],
+    "options": [
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--help"
+            ],
+            "short-names": [],
+            "valid-with": []
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--version"
+            ],
+            "short-names": [
+                "V"
+            ],
+            "valid-with": []
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--extended-regexp"
+            ],
+            "short-names": [
+                "E"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--fixed-strings"
+            ],
+            "short-names": [
+                "F"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--basic-regexp"
+            ],
+            "short-names": [
+                "G"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--perl-regexp"
+            ],
+            "short-names": [
+                "P"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--regexp"
+            ],
+            "short-names": [
+                "e"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--file"
+            ],
+            "short-names": [
+                "f"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--ignore-case"
+            ],
+            "short-names": [
+                "i"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--invert-match"
+            ],
+            "short-names": [
+                "v"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--word-regexp"
+            ],
+            "short-names": [
+                "w"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--line-regexp"
+            ],
+            "short-names": [
+                "x"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "y"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--count"
+            ],
+            "short-names": [
+                "c"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--colour"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--files-without-match"
+            ],
+            "short-names": [
+                "L"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--files-with-matches"
+            ],
+            "short-names": [
+                "l"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--max-count"
+            ],
+            "short-names": [
+                "m"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--only-matching"
+            ],
+            "short-names": [
+                "o"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--silent"
+            ],
+            "short-names": [
+                "q"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--no-messages"
+            ],
+            "short-names": [
+                "s"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--byte-offset"
+            ],
+            "short-names": [
+                "b"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--with-filename"
+            ],
+            "short-names": [
+                "H"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--no-filename"
+            ],
+            "short-names": [
+                "h"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--label"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--line-number"
+            ],
+            "short-names": [
+                "n"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--initial-tab"
+            ],
+            "short-names": [
+                "T"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--unix-byte-offsets"
+            ],
+            "short-names": [
+                "u"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--null"
+            ],
+            "short-names": [
+                "Z"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--after-context"
+            ],
+            "short-names": [
+                "A"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--before-context"
+            ],
+            "short-names": [
+                "B"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--context"
+            ],
+            "short-names": [
+                ""
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--text"
+            ],
+            "short-names": [
+                "a"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--binary-files"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--devices"
+            ],
+            "short-names": [
+                "D"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--directories"
+            ],
+            "short-names": [
+                "d"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--exclude"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--exclude-from"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--exclude-dir"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [],
+            "short-names": [
+                "I"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [
+                {
+                    "value": "(.*)",
+                    "optional": false
+                }
+            ],
+            "case-sensitive": true,
+            "long-names": [
+                "--include"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--recursive"
+            ],
+            "short-names": [
+                "r"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--line-buffered"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--mmap"
+            ],
+            "short-names": [],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--binary"
+            ],
+            "short-names": [
+                "U"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        },
+        {
+            "parameters": [],
+            "case-sensitive": true,
+            "long-names": [
+                "--null-data"
+            ],
+            "short-names": [
+                "z"
+            ],
+            "valid-with": [
+                ".*"
+            ]
+        }
+    ]
+}

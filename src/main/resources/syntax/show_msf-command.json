@@ -1,0 +1,16 @@
+{
+    "aliases": [],
+    "arguments": [
+        {
+            "argument-set-id": 0,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": "(auxiliary|exploits|payloads|options|targets|advanced|encoders|nops)?",
+                    "placement": "before"
+                }
+            ]
+        }
+    ],
+    "options": []
+}

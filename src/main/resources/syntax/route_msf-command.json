@@ -1,0 +1,85 @@
+{
+    "aliases": [],
+    "arguments": [
+        {
+            "argument-set-id": 0,
+            "argument-set-values": []
+        },
+        {
+            "argument-set-id": 1,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": "(.*)",
+                    "placement": "before"
+                },
+                {
+                    "order": 1,
+                    "value": "(^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$)|(^([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}))$",
+                    "placement": "before"
+                },
+                {
+                    "order": 2,
+                    "value": "(^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$)|(^([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}))$",
+                    "placement": "before"
+                },
+                {
+                    "order": 3,
+                    "value": "(.*)",
+                    "placement": "before"
+                }
+            ]
+        },
+        {
+            "argument-set-id": 2,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": "(.*)",
+                    "placement": "before"
+                },
+                {
+                    "order": 1,
+                    "value": "(.*)",
+                    "placement": "before"
+                },
+                {
+                    "order": 2,
+                    "value": "(.*)",
+                    "placement": "before"
+                }
+            ]
+        },
+        {
+            "argument-set-id": 3,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": "(.*)",
+                    "placement": "before"
+                }
+            ]
+        },
+        {
+            "argument-set-id": 4,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": "(.*)",
+                    "placement": "before"
+                }
+            ]
+        },
+        {
+            "argument-set-id": 5,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": "(.*)",
+                    "placement": "before"
+                }
+            ]
+        }
+    ],
+    "options": []
+}

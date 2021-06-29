@@ -1,0 +1,16 @@
+{
+    "aliases": [],
+    "arguments": [
+        {
+            "argument-set-id": 0,
+            "argument-set-values": [
+                {
+                    "order": 0,
+                    "value": "[=]^\\d{5}$",
+                    "placement": "before"
+                }
+            ]
+        }
+    ],
+    "options": []
+}

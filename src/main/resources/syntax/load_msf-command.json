@@ -1,0 +1,20 @@
+{
+    "aliases": [],
+    "arguments": [
+        {
+            "argument-set-id": 0,
+            "argument-set-values": [
+                {
+                    "order": -2,
+                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+                    "placement": "before"
+                }
+            ]
+        },
+        {
+            "argument-set-id": 1,
+            "argument-set-values": []
+        }
+    ],
+    "options": []
+}
