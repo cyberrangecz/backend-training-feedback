@@ -18,14 +18,14 @@ public class SwaggerConfig extends WebMvcConfigurationSupport {
     public Docket productApi() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("cz.muni.kypo.cmdfeedback.controller"))
+                .apis(RequestHandlerSelectors.basePackage("cz.muni.ics.kypo.training.feedback.controller"))
                 .build()
                 .apiInfo(metaData());
     }
     private ApiInfo metaData() {
         return new ApiInfoBuilder()
                 .title("Feedback Application")
-                .description("KYPO training cmdfeedback application REST API documentation")
+                .description("KYPO training feedback application REST API documentation")
                 .version("1.0.0")
                 .license("MIT License")
                 .licenseUrl("https://opensource.org/licenses/MIT")

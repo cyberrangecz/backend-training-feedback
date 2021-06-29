@@ -24,7 +24,7 @@
         <maven-install-pluggin.version>2.5.2</maven-install-pluggin.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
         <spmf.version>2.4.3</spmf.version>
-        <swagger.version>3.0.0</swagger.version>
+        <swagger.version>2.9.2</swagger.version>
         <github.kongchen.version>3.1.8</github.kongchen.version>
         <swagger-annotations.version>1.5.22</swagger-annotations.version>
         <swagger.directory>${basedir}/doc-files</swagger.directory>
