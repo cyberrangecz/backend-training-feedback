@@ -21,11 +21,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CreateReferenceGraphService {
 
-    private final ElasticsearchServiceApi elasticsearchServiceApi;
     private final GraphService graphService;
 
-    public Graph createReferenceGraph() {
-        List<DefinitionLevel> definitionLevels = elasticsearchServiceApi.getDefinitionLevels();
+    public Graph createReferenceGraph(List<DefinitionLevel> definitionLevels) {
         List<String> possibleBlueNodesLabels = new ArrayList<>();
         Long visibleLevelId = GraphConstants.FIRST_LEVEL_ID;
         boolean initStartNode = true;
@@ -33,7 +31,7 @@ public class CreateReferenceGraphService {
                 .label(GraphConstants.REFERENCE_GRAPH_LABEL)
                 .build();
 
-        for (DefinitionLevel l : definitionLevels) {
+        for (DefinitionLevel level : definitionLevels) {
             SubGraph subgraph = SubGraph.builder()
                     .label("Level: " + visibleLevelId.toString())
                     .graph(referenceGraph)
@@ -45,7 +43,7 @@ public class CreateReferenceGraphService {
                         .label(GraphConstants.START_NODE_LABEL)
                         .subGraph(subgraph)
                         .build());
-                DefinitionReferenceSolution firstSolution = l.getDefinitionReferenceSolutions().get(0);
+                DefinitionReferenceSolution firstSolution = level.getDefinitionReferenceSolutions().get(0);
                 List<String> commandList = Arrays.asList(firstSolution.getCmd().split("\\s"));
                 subgraph.getEdges().add(Edge.builder()
                         .type(firstSolution.getCmdType())
@@ -53,11 +51,11 @@ public class CreateReferenceGraphService {
                         .options(Collections.singletonList(String.join(", ", commandList.subList(1, commandList.size()))))
                         .subGraph(subgraph)
                         .fromNode(GraphConstants.START_NODE_LABEL)
-                        .toNode(l.getDefinitionReferenceSolutions().get(0).getStateName())
+                        .toNode(level.getDefinitionReferenceSolutions().get(0).getStateName())
                         .build());
                 initStartNode = false;
             }
-            l.getDefinitionReferenceSolutions().forEach(s -> {
+            level.getDefinitionReferenceSolutions().forEach(s -> {
                 subgraph.getNodes().add(Node.builder()
                         .color(s.isOptional() ? GraphConstants.GRAY : GraphConstants.GREEN)
                         .label(s.getStateName())

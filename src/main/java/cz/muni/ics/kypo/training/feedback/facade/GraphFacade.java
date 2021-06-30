@@ -1,12 +1,15 @@
 package cz.muni.ics.kypo.training.feedback.facade;
 
 import cz.muni.ics.kypo.training.feedback.dto.provider.GraphDTO;
+import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionLevel;
 import cz.muni.ics.kypo.training.feedback.mapping.GraphMapper;
 import cz.muni.ics.kypo.training.feedback.service.CreateReferenceGraphService;
 import cz.muni.ics.kypo.training.feedback.service.CreateSummaryGraphService;
 import cz.muni.ics.kypo.training.feedback.service.GraphService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @RequiredArgsConstructor
 @Service
@@ -26,8 +29,8 @@ public class GraphFacade {
 
     }
 
-    public GraphDTO createReferenceGraph() {
-        return graphMapper.mapGraphToGraphDTO(createReferenceGraphService.createReferenceGraph());
+    public GraphDTO createReferenceGraph(List<DefinitionLevel> definitionLevels) {
+        return graphMapper.mapGraphToGraphDTO(createReferenceGraphService.createReferenceGraph(definitionLevels));
     }
 
     public GraphDTO createSummaryGraph() {

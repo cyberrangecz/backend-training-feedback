@@ -29,8 +29,7 @@ public class CreateTraineeGraphService {
 
     private final List<String> achievedNodesLabels = new ArrayList<>();
 
-    Graph createTraineeGraph(Trainee trainee, Long sandboxId) {
-        List<DefinitionLevel> definitionLevels = elasticsearchServiceApi.getDefinitionLevels();
+    public Graph createTraineeGraph(Trainee trainee, Long sandboxId, List<DefinitionLevel> definitionLevels) {
         Graph graph = Graph.builder().trainee(trainee).label(GraphConstants.TRAINEE_GRAPH_LABEL + sandboxId).build();
         long visibleLevelId = GraphConstants.FIRST_LEVEL_ID;
 

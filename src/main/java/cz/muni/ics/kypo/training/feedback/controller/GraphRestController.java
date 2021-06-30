@@ -1,6 +1,7 @@
 package cz.muni.ics.kypo.training.feedback.controller;
 
 import cz.muni.ics.kypo.training.feedback.dto.provider.GraphDTO;
+import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionLevel;
 import cz.muni.ics.kypo.training.feedback.exceptions.errors.ApiError;
 import cz.muni.ics.kypo.training.feedback.facade.GraphFacade;
 import io.swagger.annotations.Api;
@@ -11,11 +12,9 @@ import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Api(value = "/graphs", tags = "Graphs", consumes = MediaType.APPLICATION_JSON_VALUE)
 @RequestMapping(value = "/graphs", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -69,8 +68,9 @@ public class GraphRestController {
             @ApiResponse(code = 500, message = "Unexpected condition was encountered.", response = ApiError.class)
     })
     @PostMapping("/reference-graph")
-    public ResponseEntity<GraphDTO> createReferenceGraph() {
-        return ResponseEntity.ok(graphFacade.createReferenceGraph());
+    public ResponseEntity<GraphDTO> createReferenceGraph(@ApiParam(value = "Reference solutions of levels.")
+                                                         @RequestBody List<DefinitionLevel> definitionLevelList) {
+        return ResponseEntity.ok(graphFacade.createReferenceGraph(definitionLevelList));
     }
 
     @ApiOperation(httpMethod = "POST",

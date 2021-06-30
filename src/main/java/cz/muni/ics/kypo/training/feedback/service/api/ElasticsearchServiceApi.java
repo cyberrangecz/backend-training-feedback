@@ -55,10 +55,6 @@ public class ElasticsearchServiceApi {
     }
 
 
-    public List<DefinitionLevel> getDefinitionLevels() {
-        return null;
-    }
-
     public List<TrainingEvent> getAllTrainingEvents(Long definitionId, Long instanceId) {
         try {
             return elasticsearchServiceWebClient

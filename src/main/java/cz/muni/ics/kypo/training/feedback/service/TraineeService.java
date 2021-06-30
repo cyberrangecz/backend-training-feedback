@@ -1,5 +1,6 @@
 package cz.muni.ics.kypo.training.feedback.service;
 
+import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionLevel;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.TrainingCommand;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.TrainingEvent;
 import cz.muni.ics.kypo.training.feedback.exceptions.EntityErrorDetail;
@@ -48,10 +49,10 @@ public class TraineeService extends CRUDServiceImpl<Trainee, Long> {
                 .orElseThrow(() -> new EntityNotFoundException(new EntityErrorDetail(Trainee.class, "sandboxId", sandboxId.getClass(), sandboxId)));
     }
 
-    public void create(Long definitionId, Long instanceId, Long sandboxId) {
+    public void create(Long definitionId, Long instanceId, Long sandboxId, List<DefinitionLevel> definitionLevels) {
         List<TrainingCommand> commands = elasticsearchServiceApi.getTrainingCommandsBySandboxId(sandboxId);
         List<TrainingEvent> events = elasticsearchServiceApi.getTrainingEventsBySandboxId(definitionId, instanceId, sandboxId);
-        Trainee trainee = this.createTraineeEntity(sandboxId, events, commands);
+        Trainee trainee = this.createTraineeEntity(sandboxId, events, commands, definitionLevels);
         traineeRepository.save(trainee);
         LOG.info("Trainee with sandbox id: {} created.", trainee.getSandboxId());
     }
@@ -98,12 +99,15 @@ public class TraineeService extends CRUDServiceImpl<Trainee, Long> {
         return level;
     }
 
-    private Trainee createTraineeEntity(Long sandboxId, List<TrainingEvent> traineeEvents, List<TrainingCommand> traineeCommands) {
+    private Trainee createTraineeEntity(Long sandboxId,
+                                        List<TrainingEvent> traineeEvents,
+                                        List<TrainingCommand> traineeCommands,
+                                        List<DefinitionLevel> definitionLevels) {
         Trainee trainee = Trainee.builder()
                 .sandboxId(sandboxId)
                 .build();
         createTraineeLevels(traineeEvents, traineeCommands, trainee).forEach(l -> trainee.getLevels().add(l));
-        trainee.setTraineeGraph(createTraineeGraphService.createTraineeGraph(trainee, sandboxId));
+        trainee.setTraineeGraph(createTraineeGraphService.createTraineeGraph(trainee, sandboxId, definitionLevels));
         return trainee;
     }
 }

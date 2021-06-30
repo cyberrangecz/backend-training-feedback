@@ -1,6 +1,7 @@
 package cz.muni.ics.kypo.training.feedback.facade;
 
 import cz.muni.ics.kypo.training.feedback.dto.provider.TraineeDTO;
+import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionLevel;
 import cz.muni.ics.kypo.training.feedback.mapping.TraineeMapper;
 import cz.muni.ics.kypo.training.feedback.service.TraineeService;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,7 @@ public class TraineeFacade {
         return traineeMapper.mapTraineeToTraineeDTO(traineeService.getTraineeBySandboxId(sandboxId));
     }
 
-    public void createTraineeBySandboxId(Long definitionId, Long instanceId, Long sandboxId) {
-       traineeService.create(definitionId, instanceId, sandboxId);
+    public void createTraineeBySandboxId(Long definitionId, Long instanceId, Long sandboxId, List<DefinitionLevel> definitionLevels) {
+       traineeService.create(definitionId, instanceId, sandboxId, definitionLevels);
     }
 }

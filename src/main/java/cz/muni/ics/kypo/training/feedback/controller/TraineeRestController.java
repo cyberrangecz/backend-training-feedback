@@ -1,6 +1,7 @@
 package cz.muni.ics.kypo.training.feedback.controller;
 
 import cz.muni.ics.kypo.training.feedback.dto.provider.TraineeDTO;
+import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionLevel;
 import cz.muni.ics.kypo.training.feedback.exceptions.errors.ApiError;
 import cz.muni.ics.kypo.training.feedback.facade.TraineeFacade;
 import io.swagger.annotations.Api;
@@ -11,11 +12,7 @@ import io.swagger.annotations.ApiResponses;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -76,8 +73,9 @@ public class TraineeRestController {
     @PostMapping("/training-definitions/{definitionId}/training-instances/{instanceId}/sandboxes/{sandboxId}")
     public ResponseEntity<Void> createTraineeBySandboxId(@ApiParam(value = "The training definition id", required = true) @PathVariable Long definitionId,
                                                          @ApiParam(value = "The training instance id", required = true) @PathVariable Long instanceId,
-                                                         @ApiParam(value = "The trainee sandbox id", required = true) @PathVariable Long sandboxId) {
-        traineeFacade.createTraineeBySandboxId(definitionId, instanceId, sandboxId);
+                                                         @ApiParam(value = "The trainee sandbox id", required = true) @PathVariable Long sandboxId,
+                                                         @ApiParam(value = "Reference solutions of levels", required = true) @RequestBody List<DefinitionLevel> definitionLevels) {
+        traineeFacade.createTraineeBySandboxId(definitionId, instanceId, sandboxId, definitionLevels);
         return ResponseEntity.noContent().build();
     }
 
