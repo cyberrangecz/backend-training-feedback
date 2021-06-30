@@ -1,43 +1,42 @@
 package cz.muni.ics.kypo.training.feedback.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import springfox.documentation.builders.ApiInfoBuilder;
+import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
-import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
-@EnableSwagger2
-public class SwaggerConfig extends WebMvcConfigurationSupport {
+public class SwaggerConfig {
+
+    private static final Logger LOG = LoggerFactory.getLogger(SwaggerConfig.class);
+    @Value("${swagger.enabled:false}")
+    private boolean swaggerEnabled;
+
     @Bean
-    public Docket productApi() {
+    public Docket publicApi() {
         return new Docket(DocumentationType.SWAGGER_2)
+                .groupName("public-api")
+                .enable(swaggerEnabled)
+                .apiInfo(apiInfo()).useDefaultResponseMessages(false)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("cz.muni.ics.kypo.training.feedback.controller"))
-                .build()
-                .apiInfo(metaData());
+                .paths(PathSelectors.any())
+                .build();
     }
-    private ApiInfo metaData() {
+
+    private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("Feedback Application")
-                .description("KYPO training feedback application REST API documentation")
-                .version("1.0.0")
+                .title("KYPO Training Feedback Service - API Reference")
+                .description("Developed by KYPO team")
                 .license("MIT License")
                 .licenseUrl("https://opensource.org/licenses/MIT")
                 .build();
-    }
-    @Override
-    protected void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("swagger-ui.html")
-                .addResourceLocations("classpath:/META-INF/resources/");
-
-        registry.addResourceHandler("/webjars/**")
-                .addResourceLocations("classpath:/META-INF/resources/webjars/");
-
     }
 }

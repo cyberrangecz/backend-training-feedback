@@ -336,6 +336,8 @@ paths:
       responses:
         200:
           description: "Trainee instance successfully created."
+          schema:
+            type: "object"
         404:
           description: "Training run with given id not found."
           schema:
@@ -645,8 +647,8 @@ definitions:
           - "NETWORK_AUTHENTICATION_REQUIRED"
         errors:
           type: "array"
-          example: "[The requested resource was not found (different for each type\
-            \ of exception).]"
+          example: "[ \\\"The requested resource was not found (different for each\
+            \ type of exception).\\\" ]"
           description: "The list of main reasons of the ApiError."
           items:
             type: "string"

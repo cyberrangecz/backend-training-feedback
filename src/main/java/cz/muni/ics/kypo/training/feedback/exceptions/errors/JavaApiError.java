@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
-@ApiModel(value = "JavaApiError", description = "A detailed error from another Java mircorservice.", parent = ApiSubError.class)
+@ApiModel(value = "JavaApiError", description = "A detailed error from another Java microservice.", parent = ApiSubError.class)
 public class JavaApiError extends ApiSubError {
     @ApiModelProperty(value = "The time when the exception occurred", example = "1574062900 (different for each type of exception)")
     private long timestamp;
@@ -19,7 +19,7 @@ public class JavaApiError extends ApiSubError {
     private String message;
     @ApiModelProperty(value = "The HTTP response status code", example = "404 Not found (different for each type of exception).")
     private HttpStatus status;
-    @ApiModelProperty(value = "The list of main reasons of the ApiError.", example = "[The requested resource was not found (different for each type of exception).]")
+    @ApiModelProperty(value = "The list of main reasons of the ApiError.", example = "[ \"The requested resource was not found (different for each type of exception).\" ]")
     private List<String> errors;
     @ApiModelProperty(value = "The requested URI path which caused error.", example = "/kypo2-rest-user-and-group/api/v1/groups/1000 (different for each type of exception).")
     private String path;
