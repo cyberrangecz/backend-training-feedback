@@ -1,20 +1,20 @@
 {
-    "aliases": [],
-    "arguments": [
+  "aliases": [],
+  "arguments": [
+    {
+      "argument-set-id": 0,
+      "argument-set-values": []
+    },
+    {
+      "argument-set-id": "-2",
+      "argument-set-values": [
         {
-            "argument-set-id": 0,
-            "argument-set-values": []
-        },
-        {
-            "argument-set-id": "-2",
-            "argument-set-values": [
-                {
-                    "order": "0",
-                    "value": ".*",
-                    "placement": "before"
-                }
-            ]
+          "order": "0",
+          "value": ".*",
+          "placement": "before"
         }
-    ],
-    "options": []
+      ]
+    }
+  ],
+  "options": []
 }

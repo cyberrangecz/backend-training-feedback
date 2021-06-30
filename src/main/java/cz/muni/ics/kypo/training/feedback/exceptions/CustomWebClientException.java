@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
  * The type Rest template exception.
  */
 public class CustomWebClientException extends RuntimeException {
-    private HttpStatus statusCode;
-    private ApiSubError apiSubError;
+    private final HttpStatus statusCode;
+    private final ApiSubError apiSubError;
 
     /**
      * Instantiates a new Rest template exception.

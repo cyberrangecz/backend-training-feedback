@@ -1,13 +1,12 @@
 package cz.muni.ics.kypo.training.feedback.service;
 
+import cz.muni.ics.kypo.training.feedback.constants.GraphConstants;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionLevel;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionReferenceSolution;
 import cz.muni.ics.kypo.training.feedback.model.Edge;
 import cz.muni.ics.kypo.training.feedback.model.Graph;
 import cz.muni.ics.kypo.training.feedback.model.Node;
 import cz.muni.ics.kypo.training.feedback.model.SubGraph;
-import cz.muni.ics.kypo.training.feedback.constants.GraphConstants;
-import cz.muni.ics.kypo.training.feedback.service.api.ElasticsearchServiceApi;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +32,7 @@ public class CreateReferenceGraphService {
 
         for (DefinitionLevel level : definitionLevels) {
             SubGraph subgraph = SubGraph.builder()
-                    .label("Level: " + visibleLevelId.toString())
+                    .label("Level: " + visibleLevelId)
                     .graph(referenceGraph)
                     .build();
             visibleLevelId++;

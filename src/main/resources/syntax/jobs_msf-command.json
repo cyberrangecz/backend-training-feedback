@@ -1,80 +1,80 @@
 {
-    "aliases": [],
-    "arguments": [],
-    "options": [
+  "aliases": [],
+  "arguments": [],
+  "options": [
+    {
+      "parameters": [],
+      "case-sensitive": false,
+      "long-names": [],
+      "short-names": [
+        "K"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": false,
+      "long-names": [],
+      "short-names": [
+        "h"
+      ],
+      "valid-with": []
+    },
+    {
+      "parameters": [
         {
-            "parameters": [],
-            "case-sensitive": false,
-            "long-names": [],
-            "short-names": [
-                "K"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": false,
-            "long-names": [],
-            "short-names": [
-                "h"
-            ],
-            "valid-with": []
-        },
-        {
-            "parameters": [
-                {
-                    "value": "[=]^\\d{5}$",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": false,
-            "long-names": [],
-            "short-names": [
-                "i"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "[=]^\\d{5}$",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": false,
-            "long-names": [],
-            "short-names": [
-                "k"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": false,
-            "long-names": [],
-            "short-names": [
-                "l"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": false,
-            "long-names": [],
-            "short-names": [
-                "v"
-            ],
-            "valid-with": [
-                ".*"
-            ]
+          "value": "[=]^\\d{5}$",
+          "optional": false
         }
-    ]
+      ],
+      "case-sensitive": false,
+      "long-names": [],
+      "short-names": [
+        "i"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "[=]^\\d{5}$",
+          "optional": false
+        }
+      ],
+      "case-sensitive": false,
+      "long-names": [],
+      "short-names": [
+        "k"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": false,
+      "long-names": [],
+      "short-names": [
+        "l"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": false,
+      "long-names": [],
+      "short-names": [
+        "v"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    }
+  ]
 }

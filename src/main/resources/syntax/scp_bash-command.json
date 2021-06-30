@@ -1,238 +1,238 @@
 {
-    "aliases": [],
-    "arguments": [
+  "aliases": [],
+  "arguments": [
+    {
+      "argument-set-id": 0,
+      "argument-set-values": [
         {
-            "argument-set-id": 0,
-            "argument-set-values": [
-                {
-                    "order": -2,
-                    "value": "(^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$)|(^([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}))$",
-                    "placement": "after"
-                },
-                {
-                    "order": 1,
-                    "value": "(^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$)|(^([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}))$",
-                    "placement": "after"
-                }
-            ]
+          "order": -2,
+          "value": "(^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$)|(^([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}))$",
+          "placement": "after"
+        },
+        {
+          "order": 1,
+          "value": "(^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$)|(^([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}))$",
+          "placement": "after"
         }
-    ],
-    "options": [
+      ]
+    }
+  ],
+  "options": [
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "A"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "B"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "C"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
         {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "A"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "B"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "C"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "c"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "F"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "i"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$)|(^([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}))$",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "J"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "l"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "o"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "r/^((((([1-9])|([1-9][0-9])|([1-9][0-9][0-9])|([1-9][0-9][0-9][0-9])|([1-6][0-5][0-5][0-3][0-5])))))$/",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "P"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "p"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "q"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "r"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "S"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "T"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "v"
-            ],
-            "valid-with": [
-                ".*"
-            ]
+          "value": "(.*)",
+          "optional": false
         }
-    ]
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "c"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "F"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "i"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(^((25[0-5]|(2[0-4]|1[0-9]|[1-9]|)[0-9])(\\.(?!$)|$)){4}$)|(^([0-9A-Fa-f]{0,4}:){2,7}([0-9A-Fa-f]{1,4}$|((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(\\.|$)){4}))$",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "J"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "l"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "o"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "r/^((((([1-9])|([1-9][0-9])|([1-9][0-9][0-9])|([1-9][0-9][0-9][0-9])|([1-6][0-5][0-5][0-3][0-5])))))$/",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "P"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "p"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "q"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "r"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "S"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "T"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "v"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    }
+  ]
 }

@@ -1,11 +1,7 @@
 package cz.muni.ics.kypo.training.feedback.model;
 
 import cz.muni.ics.kypo.training.feedback.enums.MistakeType;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;

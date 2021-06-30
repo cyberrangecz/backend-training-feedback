@@ -1,336 +1,336 @@
 {
-    "aliases": [],
-    "arguments": [],
-    "options": [
+  "aliases": [],
+  "arguments": [],
+  "options": [
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "A"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
         {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "A"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "a"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "b"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "C"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "c"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "E"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "e"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "g"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "H"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "h"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "i"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "K"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "k"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "L"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "l"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "n"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "P"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "p"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "S"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "s"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "U"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "u"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "V"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "v"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [
-                "--"
-            ],
-            "short-names": [],
-            "valid-with": [
-                ".*"
-            ]
+          "value": "(.*)",
+          "optional": false
         }
-    ]
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "a"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "b"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "C"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "c"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "E"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "e"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "g"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "H"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "h"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "i"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "K"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "k"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "L"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "l"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "n"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "P"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "p"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "S"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "s"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "U"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "u"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "V"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "v"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [
+        "--"
+      ],
+      "short-names": [],
+      "valid-with": [
+        ".*"
+      ]
+    }
+  ]
 }

@@ -13,11 +13,24 @@ import javax.validation.constraints.Past;
 import java.time.LocalDateTime;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 @AllArgsConstructor
 @NoArgsConstructor
 @ApiModel(value = "CommandDTO", description = "Command with valid syntax and semantic.", parent = AbstractCommandDTO.class)
 public class CommandDTO extends AbstractCommandDTO {
+
+    @Past
+    @NotNull
+    @ApiModelProperty(value = "Time when command was recorded.", required = true, example = "07:23:43")
+    @JsonDeserialize(using = LocalDateDeserializer.class)
+    @JsonFormat(pattern = "hh:mm:ss")
+    private LocalDateTime timestamp;
+    @NotEmpty
+    @ApiModelProperty(value = "Ip address where command was submitted.", required = true, example = "10.10.17.5")
+    private String fromHostIp;
+    @NotEmpty
+    @ApiModelProperty(value = "Valid command options", required = true, example = "-p 25 -a 20.20.15.18")
+    private String options;
 
     @Builder
     public CommandDTO(@NotEmpty String commandType, @NotEmpty String cmd, @Past @NotNull LocalDateTime timestamp, @NotEmpty String fromHostIp, @NotEmpty String options) {
@@ -26,20 +39,5 @@ public class CommandDTO extends AbstractCommandDTO {
         this.fromHostIp = fromHostIp;
         this.options = options;
     }
-
-    @Past
-    @NotNull
-    @ApiModelProperty(value = "Time when command was recorded.", required = true, example = "07:23:43")
-    @JsonDeserialize(using = LocalDateDeserializer.class)
-    @JsonFormat(pattern = "hh:mm:ss")
-    private LocalDateTime timestamp;
-
-    @NotEmpty
-    @ApiModelProperty(value = "Ip address where command was submitted.", required = true, example = "10.10.17.5")
-    private String fromHostIp;
-
-    @NotEmpty
-    @ApiModelProperty(value = "Valid command options", required = true, example = "-p 25 -a 20.20.15.18")
-    private String options;
 
 }

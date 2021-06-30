@@ -1,286 +1,286 @@
 {
-    "aliases": [],
-    "arguments": [],
-    "options": [
+  "aliases": [],
+  "arguments": [],
+  "options": [
+    {
+      "parameters": [
         {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [
-                "--environment"
-            ],
-            "short-names": [
-                "E"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [
-                "--migration-path"
-            ],
-            "short-names": [
-                "M"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [
-                "--no-database"
-            ],
-            "short-names": [
-                "n"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [
-                "--yaml"
-            ],
-            "short-names": [
-                "y"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [],
-            "short-names": [
-                "c"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [
-                "--version"
-            ],
-            "short-names": [
-                "v"
-            ],
-            "valid-with": []
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [
-                "--defer-module-loads"
-            ],
-            "short-names": [],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [
-                "--module-path"
-            ],
-            "short-names": [
-                "m"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [
-                "--ask"
-            ],
-            "short-names": [
-                "a"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [
-                "--defanged"
-            ],
-            "short-names": [
-                "d"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [
-                "--real-readline"
-            ],
-            "short-names": [
-                "L"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [
-                "--output"
-            ],
-            "short-names": [
-                "o"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [
-                "--plugin"
-            ],
-            "short-names": [
-                "p"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [
-                "--quiet"
-            ],
-            "short-names": [
-                "q"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [
-                "--resource"
-            ],
-            "short-names": [
-                "r"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [
-                {
-                    "value": "(.*)",
-                    "optional": false
-                }
-            ],
-            "case-sensitive": true,
-            "long-names": [
-                "--execute-command"
-            ],
-            "short-names": [
-                "x"
-            ],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [
-                "--help"
-            ],
-            "short-names": [
-                "h"
-            ],
-            "valid-with": []
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [
-                "--"
-            ],
-            "short-names": [],
-            "valid-with": [
-                ".*"
-            ]
-        },
-        {
-            "parameters": [],
-            "case-sensitive": true,
-            "long-names": [
-                "--"
-            ],
-            "short-names": [],
-            "valid-with": [
-                ".*"
-            ]
+          "value": "(.*)",
+          "optional": false
         }
-    ]
+      ],
+      "case-sensitive": true,
+      "long-names": [
+        "--environment"
+      ],
+      "short-names": [
+        "E"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [
+        "--migration-path"
+      ],
+      "short-names": [
+        "M"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [
+        "--no-database"
+      ],
+      "short-names": [
+        "n"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [
+        "--yaml"
+      ],
+      "short-names": [
+        "y"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [],
+      "short-names": [
+        "c"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [
+        "--version"
+      ],
+      "short-names": [
+        "v"
+      ],
+      "valid-with": []
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [
+        "--defer-module-loads"
+      ],
+      "short-names": [],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [
+        "--module-path"
+      ],
+      "short-names": [
+        "m"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [
+        "--ask"
+      ],
+      "short-names": [
+        "a"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [
+        "--defanged"
+      ],
+      "short-names": [
+        "d"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [
+        "--real-readline"
+      ],
+      "short-names": [
+        "L"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [
+        "--output"
+      ],
+      "short-names": [
+        "o"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [
+        "--plugin"
+      ],
+      "short-names": [
+        "p"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [
+        "--quiet"
+      ],
+      "short-names": [
+        "q"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(^\\/$|^((\\/)?[a-zA-Z0-9_-]+)+$)|(^[^</*?\"\\\\>:|]+$)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [
+        "--resource"
+      ],
+      "short-names": [
+        "r"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [
+        {
+          "value": "(.*)",
+          "optional": false
+        }
+      ],
+      "case-sensitive": true,
+      "long-names": [
+        "--execute-command"
+      ],
+      "short-names": [
+        "x"
+      ],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [
+        "--help"
+      ],
+      "short-names": [
+        "h"
+      ],
+      "valid-with": []
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [
+        "--"
+      ],
+      "short-names": [],
+      "valid-with": [
+        ".*"
+      ]
+    },
+    {
+      "parameters": [],
+      "case-sensitive": true,
+      "long-names": [
+        "--"
+      ],
+      "short-names": [],
+      "valid-with": [
+        ".*"
+      ]
+    }
+  ]
 }

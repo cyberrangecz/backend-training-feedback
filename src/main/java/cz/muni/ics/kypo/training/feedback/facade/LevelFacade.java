@@ -16,6 +16,6 @@ public class LevelFacade {
     private final LevelService levelService;
 
     public List<LevelDTO> getLevelsByTrainee(Long sandboxId) {
-        return  levelMapper.mapToListLevelDTO(levelService.getLevelsByTraineeSandboxId(sandboxId));
+        return levelMapper.mapToListLevelDTO(levelService.getLevelsByTraineeSandboxId(sandboxId));
     }
 }

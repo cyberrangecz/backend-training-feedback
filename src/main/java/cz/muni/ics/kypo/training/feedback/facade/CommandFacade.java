@@ -5,8 +5,8 @@ import cz.muni.ics.kypo.training.feedback.dto.provider.AggregatedWrongCommandsDT
 import cz.muni.ics.kypo.training.feedback.dto.provider.CommandDTO;
 import cz.muni.ics.kypo.training.feedback.dto.provider.WrongCommandDTO;
 import cz.muni.ics.kypo.training.feedback.enums.MistakeType;
-import cz.muni.ics.kypo.training.feedback.model.Command;
 import cz.muni.ics.kypo.training.feedback.mapping.CommandMapper;
+import cz.muni.ics.kypo.training.feedback.model.Command;
 import cz.muni.ics.kypo.training.feedback.service.CommandService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -29,21 +29,21 @@ public class CommandFacade {
     public List<AggregatedCommandDTO> getCommands() {
         List<AggregatedCommandDTO> aggregatedCommands = new ArrayList<>();
         Map<String, Map<String, Map<String, Long>>> groupedByCommandTypeMap = commandService.getSuccessCommands().stream()
-                .collect(groupingBy(Command::getCommandType, groupingBy(Command::getCmd, groupingBy(Command::getOptions,  counting()))));
+                .collect(groupingBy(Command::getCommandType, groupingBy(Command::getCmd, groupingBy(Command::getOptions, counting()))));
 
-        for (String cmdType: groupedByCommandTypeMap.keySet()) {
+        for (String cmdType : groupedByCommandTypeMap.keySet()) {
             Map<String, Map<String, Long>> groupedByCommandMap = groupedByCommandTypeMap.get(cmdType);
 
-            for (String cmd: groupedByCommandMap.keySet()) {
-                Map<String, Long>  groupedByCommandOptions = groupedByCommandMap.get(cmd);
+            for (String cmd : groupedByCommandMap.keySet()) {
+                Map<String, Long> groupedByCommandOptions = groupedByCommandMap.get(cmd);
                 aggregatedCommands.add(AggregatedCommandDTO.builder()
                         .commandType(cmdType)
                         .cmd(cmd)
                         .frequency(groupedByCommandOptions.values().stream().reduce(0L, Long::sum))
                         .granularityPerOption(groupedByCommandOptions)
                         .build());
-                }
             }
+        }
         Collections.sort(aggregatedCommands, Collections.reverseOrder());
         return aggregatedCommands;
     }

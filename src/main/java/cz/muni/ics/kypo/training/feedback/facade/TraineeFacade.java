@@ -25,6 +25,6 @@ public class TraineeFacade {
     }
 
     public void createTraineeBySandboxId(Long definitionId, Long instanceId, Long sandboxId, List<DefinitionLevel> definitionLevels) {
-       traineeService.create(definitionId, instanceId, sandboxId, definitionLevels);
+        traineeService.create(definitionId, instanceId, sandboxId, definitionLevels);
     }
 }

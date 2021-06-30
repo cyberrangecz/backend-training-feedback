@@ -30,7 +30,7 @@ public class CreateCommandService {
                 .commandType(trainingCommand.getCmdType())
                 .fromHostIp(trainingCommand.getIp())
                 .level(level)
-                .options(options.length() > 255 ? options.substring(0,254) : options)
+                .options(options.length() > 255 ? options.substring(0, 254) : options)
                 .timestamp(trainingCommand.getTimestamp())
                 .build();
         return mistakeAnalysisService.analyzeCommand(command);

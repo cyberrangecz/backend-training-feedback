@@ -1,17 +1,11 @@
 package cz.muni.ics.kypo.training.feedback.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import cz.muni.ics.kypo.training.feedback.dto.resolver.mistakes.*;
 import cz.muni.ics.kypo.training.feedback.enums.MistakeType;
 import cz.muni.ics.kypo.training.feedback.exceptions.InternalServerErrorException;
 import cz.muni.ics.kypo.training.feedback.model.Command;
 import cz.muni.ics.kypo.training.feedback.model.Mistake;
-import cz.muni.ics.kypo.training.feedback.dto.resolver.mistakes.CommandIp;
-import cz.muni.ics.kypo.training.feedback.dto.resolver.mistakes.CommandSyntax;
-import cz.muni.ics.kypo.training.feedback.dto.resolver.mistakes.SyntaxArgument;
-import cz.muni.ics.kypo.training.feedback.dto.resolver.mistakes.SyntaxArgumentSet;
-import cz.muni.ics.kypo.training.feedback.dto.resolver.mistakes.SyntaxCommandOption;
-import cz.muni.ics.kypo.training.feedback.dto.resolver.mistakes.SyntaxOptionParameter;
-import cz.muni.ics.kypo.training.feedback.dto.resolver.mistakes.TrainingSemantic;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,15 +17,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.text.MessageFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Stack;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
@@ -41,20 +27,17 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class MistakeAnalysisService {
 
-    private static final Logger LOG = LoggerFactory.getLogger(MistakeAnalysisService.class);
     public static final long ANY_ORDER = -1L;
     public static final long INFINITE = -2L;
     public static final String SYNTAX_FILES_PATH = "classpath:syntax/*.json";
     public static final String SEMANTIC_FILE_WITH_PATH = "semantic/kobylka.json";
     public static final String VALID_IP_ADDRESS_REGEX = "((?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}(?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])";
-
+    private static final Logger LOG = LoggerFactory.getLogger(MistakeAnalysisService.class);
     private final ResourcePatternResolver resourceResolver;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
-
-    private TrainingSemantic trainingSemantic;
-
     private final Map<String, CommandSyntax> syntaxes = new HashMap<>();
+    private TrainingSemantic trainingSemantic;
 
     public Command analyzeCommand(Command command) {
         if (!syntaxes.containsKey(command.getCmd())) {

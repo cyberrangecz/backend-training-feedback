@@ -29,12 +29,11 @@ import java.io.IOException;
 public class WebClientConfig {
 
 
+    private final ObjectMapper objectMapper;
     @Value("${user-and-group-server.uri}")
     private String userAndGroupURI;
     @Value("${elasticsearch-service.uri}")
     private String elasticsearchServiceURI;
-
-    private ObjectMapper objectMapper;
 
     @Autowired
     public WebClientConfig(@Qualifier("webClientObjectMapper") ObjectMapper objectMapper) {
@@ -100,7 +99,7 @@ public class WebClientConfig {
 
     private ExchangeFilterFunction javaMicroserviceExceptionHandlingFunction() {
         return ExchangeFilterFunction.ofResponseProcessor(clientResponse -> {
-            if(clientResponse.statusCode().is4xxClientError() || clientResponse.statusCode().is5xxServerError()) {
+            if (clientResponse.statusCode().is4xxClientError() || clientResponse.statusCode().is5xxServerError()) {
                 return clientResponse.bodyToMono(String.class)
                         .flatMap(errorBody -> {
                             JavaApiError javaApiError = obtainSuitableJavaApiError(errorBody);

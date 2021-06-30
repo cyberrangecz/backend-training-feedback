@@ -10,9 +10,8 @@ import java.util.List;
 @AllArgsConstructor
 public class DefinitionLevel {
 
+    @JsonProperty("reference_solution")
+    private List<DefinitionReferenceSolution> definitionReferenceSolutions;
     @JsonProperty("id")
     private Long levelId;
-
-    @JsonProperty("reference_solution")
-    List<DefinitionReferenceSolution> definitionReferenceSolutions;
 }

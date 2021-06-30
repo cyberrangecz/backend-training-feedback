@@ -1,10 +1,10 @@
 package cz.muni.ics.kypo.training.feedback.service;
 
+import cz.muni.ics.kypo.training.feedback.constants.GraphConstants;
 import cz.muni.ics.kypo.training.feedback.model.Edge;
 import cz.muni.ics.kypo.training.feedback.model.Graph;
 import cz.muni.ics.kypo.training.feedback.model.Node;
 import cz.muni.ics.kypo.training.feedback.model.SubGraph;
-import cz.muni.ics.kypo.training.feedback.constants.GraphConstants;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

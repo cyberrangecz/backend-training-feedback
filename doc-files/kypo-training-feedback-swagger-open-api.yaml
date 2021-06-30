@@ -6,24 +6,24 @@ info:
 host: "localhost:8082"
 basePath: "/kypo-training-feedback/api/v1"
 tags:
-- name: "Commands"
-- name: "Graphs"
-- name: "Levels"
-- name: "Trainees"
+  - name: "Commands"
+  - name: "Graphs"
+  - name: "Levels"
+  - name: "Trainees"
 schemes:
-- "http"
-- "https"
+  - "http"
+  - "https"
 paths:
   /commands:
     get:
       tags:
-      - "Commands"
+        - "Commands"
       summary: "Get aggregated commands from all trainees."
       description: ""
       operationId: "getAggregatedCommands"
       produces:
-      - "application/json"
-      parameters: []
+        - "application/json"
+      parameters: [ ]
       responses:
         200:
           description: "Aggregated commands have been found."
@@ -40,19 +40,19 @@ paths:
   /commands/sandbox-id/{sandboxId}:
     get:
       tags:
-      - "Commands"
+        - "Commands"
       summary: "Get all valid commands of trainee."
       description: ""
       operationId: "getTraineeValidCommands"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "sandboxId"
-        in: "path"
-        description: "The trainee sandbox id"
-        required: true
-        type: "long"
-        format: "int64"
+        - name: "sandboxId"
+          in: "path"
+          description: "The trainee sandbox id"
+          required: true
+          type: "long"
+          format: "int64"
       responses:
         200:
           description: "Trainee commands have been found."
@@ -69,25 +69,25 @@ paths:
   /commands/sandbox-id/{sandboxId}/level-id/{levelId}:
     get:
       tags:
-      - "Commands"
+        - "Commands"
       summary: "Get all valid commands of trainee in some level"
       description: ""
       operationId: "getTraineeValidCommandsInSpecificLevel"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "sandboxId"
-        in: "path"
-        description: "The trainee sandbox id"
-        required: true
-        type: "long"
-        format: "int64"
-      - name: "levelId"
-        in: "path"
-        description: "The trainees level id"
-        required: true
-        type: "long"
-        format: "int64"
+        - name: "sandboxId"
+          in: "path"
+          description: "The trainee sandbox id"
+          required: true
+          type: "long"
+          format: "int64"
+        - name: "levelId"
+          in: "path"
+          description: "The trainees level id"
+          required: true
+          type: "long"
+          format: "int64"
       responses:
         200:
           description: "Trainee commands have been found."
@@ -104,36 +104,36 @@ paths:
   /error-commands:
     get:
       tags:
-      - "Commands"
+        - "Commands"
       summary: "Get commands with specific mistake type for group of trainees"
       description: ""
       operationId: "getWrongCommands"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "sandboxIds"
-        in: "query"
-        description: "The trainees sandbox ids"
-        required: true
-        type: "List of numbers"
-        items:
-          type: "integer"
-          format: "int64"
-      - name: "mistakeTypes"
-        in: "query"
-        description: "Mistake type"
-        required: true
-        type: "List of strings"
-        items:
-          type: "string"
-          enum:
-          - "SYNTAX_UNKNOWN_COMMAND"
-          - "SYNTAX_INVALID_ARGUMENTS"
-          - "SYNTAX_INVALID_OPTION"
-          - "SYNTAX_MISSING_OPTION_PARAM"
-          - "SYNTAX_INVALID_OPTION_PARAM"
-          - "SEMANTIC_UNKNOWN_IP"
-          - "SEMANTIC_WRONG_IP"
+        - name: "sandboxIds"
+          in: "query"
+          description: "The trainees sandbox ids"
+          required: true
+          type: "List of numbers"
+          items:
+            type: "integer"
+            format: "int64"
+        - name: "mistakeTypes"
+          in: "query"
+          description: "Mistake type"
+          required: true
+          type: "List of strings"
+          items:
+            type: "string"
+            enum:
+              - "SYNTAX_UNKNOWN_COMMAND"
+              - "SYNTAX_INVALID_ARGUMENTS"
+              - "SYNTAX_INVALID_OPTION"
+              - "SYNTAX_MISSING_OPTION_PARAM"
+              - "SYNTAX_INVALID_OPTION_PARAM"
+              - "SEMANTIC_UNKNOWN_IP"
+              - "SEMANTIC_WRONG_IP"
       responses:
         200:
           description: "Trainees invalid commands have been found."
@@ -150,18 +150,18 @@ paths:
   /graphs/label/{label}:
     get:
       tags:
-      - "Graphs"
+        - "Graphs"
       summary: "Get graph by label"
       description: "For example for getting Reference graph or summary one."
       operationId: "getGraphByLabel"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "label"
-        in: "path"
-        description: "Graph label"
-        required: true
-        type: "string"
+        - name: "label"
+          in: "path"
+          description: "Graph label"
+          required: true
+          type: "string"
       responses:
         200:
           description: "Graph instance have been found."
@@ -178,13 +178,13 @@ paths:
   /graphs/reference-graph:
     post:
       tags:
-      - "Graphs"
+        - "Graphs"
       summary: "Create reference graph"
       description: "This should be done only once, before first one user logged in."
       operationId: "createReferenceGraph"
       produces:
-      - "application/json"
-      parameters: []
+        - "application/json"
+      parameters: [ ]
       responses:
         200:
           description: "Reference graph successfully created."
@@ -197,19 +197,19 @@ paths:
   /graphs/sandbox-id/{sandboxId}:
     get:
       tags:
-      - "Graphs"
+        - "Graphs"
       summary: "Get graph by trainee sandbox id"
       description: ""
       operationId: "getGraphBySandboxId"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "sandboxId"
-        in: "path"
-        description: "The trainee sandbox id"
-        required: true
-        type: "long"
-        format: "int64"
+        - name: "sandboxId"
+          in: "path"
+          description: "The trainee sandbox id"
+          required: true
+          type: "long"
+          format: "int64"
       responses:
         200:
           description: "Graph instance have been found."
@@ -226,14 +226,14 @@ paths:
   /graphs/summary-graph:
     post:
       tags:
-      - "Graphs"
+        - "Graphs"
       summary: "Create summary graph"
       description: "This should be done only once after all trainees end up their\
         \ training"
       operationId: "createSummaryGraph"
       produces:
-      - "application/json"
-      parameters: []
+        - "application/json"
+      parameters: [ ]
       responses:
         200:
           description: "Summary graph successfully created."
@@ -250,19 +250,19 @@ paths:
   /levels/sandbox-id/{sandboxId}:
     get:
       tags:
-      - "Levels"
+        - "Levels"
       summary: "Get all absolved levels by trainee by his sandbox id"
       description: ""
       operationId: "getLevels"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "sandboxId"
-        in: "path"
-        description: "The trainee sandbox id"
-        required: true
-        type: "long"
-        format: "int64"
+        - name: "sandboxId"
+          in: "path"
+          description: "The trainee sandbox id"
+          required: true
+          type: "long"
+          format: "int64"
       responses:
         200:
           description: "Trainee level instances have been found."
@@ -279,19 +279,19 @@ paths:
   /trainees/sandboxes/{sandboxId}:
     get:
       tags:
-      - "Trainees"
+        - "Trainees"
       summary: "Get trainee by sandboxId"
       description: ""
       operationId: "getTraineeInstance"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "sandboxId"
-        in: "path"
-        description: "The trainee sandbox id"
-        required: true
-        type: "long"
-        format: "int64"
+        - name: "sandboxId"
+          in: "path"
+          description: "The trainee sandbox id"
+          required: true
+          type: "long"
+          format: "int64"
       responses:
         200:
           description: "Trainee instance have been found."
@@ -308,31 +308,31 @@ paths:
   /trainees/training-definitions/{definitionId}/training-instances/{instanceId}/sandboxes/{sandboxId}:
     post:
       tags:
-      - "Trainees"
+        - "Trainees"
       summary: "Create trainee instance with computed cmdfeedback"
       description: "This should be done only once for every user"
       operationId: "createTraineeInstance"
       produces:
-      - "application/json"
+        - "application/json"
       parameters:
-      - name: "definitionId"
-        in: "path"
-        description: "The training definition id"
-        required: true
-        type: "integer"
-        format: "int64"
-      - name: "instanceId"
-        in: "path"
-        description: "The training instance id"
-        required: true
-        type: "integer"
-        format: "int64"
-      - name: "sandboxId"
-        in: "path"
-        description: "The trainee sandbox id"
-        required: true
-        type: "integer"
-        format: "int64"
+        - name: "definitionId"
+          in: "path"
+          description: "The training definition id"
+          required: true
+          type: "integer"
+          format: "int64"
+        - name: "instanceId"
+          in: "path"
+          description: "The training instance id"
+          required: true
+          type: "integer"
+          format: "int64"
+        - name: "sandboxId"
+          in: "path"
+          description: "The trainee sandbox id"
+          required: true
+          type: "integer"
+          format: "int64"
       responses:
         200:
           description: "Trainee instance successfully created."
@@ -350,8 +350,8 @@ definitions:
   AbstractCommandDTO:
     type: "object"
     required:
-    - "cmd"
-    - "commandType"
+      - "cmd"
+      - "commandType"
     properties:
       commandType:
         type: "string"
@@ -364,35 +364,35 @@ definitions:
     description: "AggregatedCommandDTO, WrongCommandsDTO, CommandDTO"
   AggregatedCommandDTO:
     allOf:
-    - $ref: "#/definitions/AbstractCommandDTO"
-    - type: "object"
-      required:
-      - "frequency"
-      - "granularityPerOption"
-      properties:
-        frequency:
-          type: "integer"
-          format: "int64"
-          example: 25
-          description: "Count of all usages of same command regardless to command\
-            \ options."
-        granularityPerOption:
-          type: "object"
-          example: "-vvv: 12, \n -a: 22"
-          description: "Count of command usages for every options."
-          additionalProperties:
+      - $ref: "#/definitions/AbstractCommandDTO"
+      - type: "object"
+        required:
+          - "frequency"
+          - "granularityPerOption"
+        properties:
+          frequency:
             type: "integer"
             format: "int64"
-      description: "Contains info about options and their granularity for some command."
+            example: 25
+            description: "Count of all usages of same command regardless to command\
+            \ options."
+          granularityPerOption:
+            type: "object"
+            example: "-vvv: 12, \n -a: 22"
+            description: "Count of command usages for every options."
+            additionalProperties:
+              type: "integer"
+              format: "int64"
+        description: "Contains info about options and their granularity for some command."
   ApiEntityError:
     allOf:
-    - $ref: "#/definitions/ApiError"
-    - type: "object"
-      properties:
-        entityErrorDetail:
-          description: "Detail of the entity which is related to the error."
-          $ref: "#/definitions/EntityErrorDetail"
-      description: "A detailed error information related to the entity."
+      - $ref: "#/definitions/ApiError"
+      - type: "object"
+        properties:
+          entityErrorDetail:
+            description: "Detail of the entity which is related to the error."
+            $ref: "#/definitions/EntityErrorDetail"
+        description: "A detailed error information related to the entity."
   ApiError:
     type: "object"
     properties:
@@ -406,178 +406,6 @@ definitions:
         example: "404 Not found (different for each type of exception)."
         description: "The HTTP response status code"
         enum:
-        - "CONTINUE"
-        - "SWITCHING_PROTOCOLS"
-        - "PROCESSING"
-        - "CHECKPOINT"
-        - "OK"
-        - "CREATED"
-        - "ACCEPTED"
-        - "NON_AUTHORITATIVE_INFORMATION"
-        - "NO_CONTENT"
-        - "RESET_CONTENT"
-        - "PARTIAL_CONTENT"
-        - "MULTI_STATUS"
-        - "ALREADY_REPORTED"
-        - "IM_USED"
-        - "MULTIPLE_CHOICES"
-        - "MOVED_PERMANENTLY"
-        - "FOUND"
-        - "MOVED_TEMPORARILY"
-        - "SEE_OTHER"
-        - "NOT_MODIFIED"
-        - "USE_PROXY"
-        - "TEMPORARY_REDIRECT"
-        - "PERMANENT_REDIRECT"
-        - "BAD_REQUEST"
-        - "UNAUTHORIZED"
-        - "PAYMENT_REQUIRED"
-        - "FORBIDDEN"
-        - "NOT_FOUND"
-        - "METHOD_NOT_ALLOWED"
-        - "NOT_ACCEPTABLE"
-        - "PROXY_AUTHENTICATION_REQUIRED"
-        - "REQUEST_TIMEOUT"
-        - "CONFLICT"
-        - "GONE"
-        - "LENGTH_REQUIRED"
-        - "PRECONDITION_FAILED"
-        - "PAYLOAD_TOO_LARGE"
-        - "REQUEST_ENTITY_TOO_LARGE"
-        - "URI_TOO_LONG"
-        - "REQUEST_URI_TOO_LONG"
-        - "UNSUPPORTED_MEDIA_TYPE"
-        - "REQUESTED_RANGE_NOT_SATISFIABLE"
-        - "EXPECTATION_FAILED"
-        - "I_AM_A_TEAPOT"
-        - "INSUFFICIENT_SPACE_ON_RESOURCE"
-        - "METHOD_FAILURE"
-        - "DESTINATION_LOCKED"
-        - "UNPROCESSABLE_ENTITY"
-        - "LOCKED"
-        - "FAILED_DEPENDENCY"
-        - "UPGRADE_REQUIRED"
-        - "PRECONDITION_REQUIRED"
-        - "TOO_MANY_REQUESTS"
-        - "REQUEST_HEADER_FIELDS_TOO_LARGE"
-        - "UNAVAILABLE_FOR_LEGAL_REASONS"
-        - "INTERNAL_SERVER_ERROR"
-        - "NOT_IMPLEMENTED"
-        - "BAD_GATEWAY"
-        - "SERVICE_UNAVAILABLE"
-        - "GATEWAY_TIMEOUT"
-        - "HTTP_VERSION_NOT_SUPPORTED"
-        - "VARIANT_ALSO_NEGOTIATES"
-        - "INSUFFICIENT_STORAGE"
-        - "LOOP_DETECTED"
-        - "BANDWIDTH_LIMIT_EXCEEDED"
-        - "NOT_EXTENDED"
-        - "NETWORK_AUTHENTICATION_REQUIRED"
-      message:
-        type: "string"
-        example: "The IDMGroup could not be found in database (different for each\
-          \ type of exception)."
-        description: "The specific description of the ApiError."
-      errors:
-        type: "array"
-        example: "[The requested resource was not found (different for each type of\
-          \ exception).]"
-        description: "The list of main reasons of the ApiError."
-        items:
-          type: "string"
-      path:
-        type: "string"
-        example: "/kypo2-rest-user-and-group/api/v1/groups/1000 (different for each\
-          \ type of exception)."
-        description: "The requested URI path which caused error."
-    description: "Superclass for classes ApiEntityError and ApiMicroserviceError"
-  ApiMicroserviceError:
-    allOf:
-    - $ref: "#/definitions/ApiError"
-    - type: "object"
-      properties:
-        apiSubError:
-          description: "Detailed error from another microservice."
-          $ref: "#/definitions/ApiSubError"
-      description: "A detailed error information related to the microservice."
-  ApiSubError:
-    type: "object"
-    properties:
-      message:
-        type: "string"
-    description: "Superclass for classes JavaApiError and PythonApiError"
-  CommandDTO:
-    allOf:
-    - $ref: "#/definitions/AbstractCommandDTO"
-    - type: "object"
-      required:
-      - "fromHostIp"
-      - "options"
-      - "timestamp"
-      properties:
-        timestamp:
-          type: "string"
-          format: "date-time"
-          example: "07:23:43"
-          description: "Time when command was recorded."
-        fromHostIp:
-          type: "string"
-          example: "10.10.17.5"
-          description: "Ip address where command was submitted."
-        options:
-          type: "string"
-          example: "-p 25 -a 20.20.15.18"
-          description: "Valid command options"
-      description: "Command with valid syntax and semantic."
-  EntityErrorDetail:
-    type: "object"
-    properties:
-      entity:
-        type: "string"
-        example: "IDMGroup"
-        description: "Class of the entity."
-      identifier:
-        type: "string"
-        example: "id"
-        description: "Identifier of the entity."
-      identifierValue:
-        type: "object"
-        example: "1"
-        description: "Value of the identifier."
-      reason:
-        type: "string"
-        example: "Group with same name already exists."
-        description: "Detailed message of the exception"
-  GraphDTO:
-    type: "object"
-    required:
-    - "graph"
-    properties:
-      graph:
-        type: "string"
-        example: "'digraph {a -> b}'"
-        description: "Graph in DOT format."
-    description: "Graph in DOT format."
-  JavaApiError:
-    allOf:
-    - $ref: "#/definitions/ApiSubError"
-    - type: "object"
-      properties:
-        message:
-          type: "string"
-          example: "The IDMGroup could not be found in database (different for each\
-            \ type of exception)."
-          description: "The specific description of the ApiError."
-        timestamp:
-          type: "integer"
-          format: "int64"
-          example: "1574062900 (different for each type of exception)"
-          description: "The time when the exception occurred"
-        status:
-          type: "string"
-          example: "404 Not found (different for each type of exception)."
-          description: "The HTTP response status code"
-          enum:
           - "CONTINUE"
           - "SWITCHING_PROTOCOLS"
           - "PROCESSING"
@@ -645,26 +473,198 @@ definitions:
           - "BANDWIDTH_LIMIT_EXCEEDED"
           - "NOT_EXTENDED"
           - "NETWORK_AUTHENTICATION_REQUIRED"
-        errors:
-          type: "array"
-          example: "[ \\\"The requested resource was not found (different for each\
-            \ type of exception).\\\" ]"
-          description: "The list of main reasons of the ApiError."
-          items:
-            type: "string"
-        path:
+      message:
+        type: "string"
+        example: "The IDMGroup could not be found in database (different for each\
+          \ type of exception)."
+        description: "The specific description of the ApiError."
+      errors:
+        type: "array"
+        example: "[The requested resource was not found (different for each type of\
+          \ exception).]"
+        description: "The list of main reasons of the ApiError."
+        items:
           type: "string"
-          example: "/kypo2-rest-user-and-group/api/v1/groups/1000 (different for each\
+      path:
+        type: "string"
+        example: "/kypo2-rest-user-and-group/api/v1/groups/1000 (different for each\
+          \ type of exception)."
+        description: "The requested URI path which caused error."
+    description: "Superclass for classes ApiEntityError and ApiMicroserviceError"
+  ApiMicroserviceError:
+    allOf:
+      - $ref: "#/definitions/ApiError"
+      - type: "object"
+        properties:
+          apiSubError:
+            description: "Detailed error from another microservice."
+            $ref: "#/definitions/ApiSubError"
+        description: "A detailed error information related to the microservice."
+  ApiSubError:
+    type: "object"
+    properties:
+      message:
+        type: "string"
+    description: "Superclass for classes JavaApiError and PythonApiError"
+  CommandDTO:
+    allOf:
+      - $ref: "#/definitions/AbstractCommandDTO"
+      - type: "object"
+        required:
+          - "fromHostIp"
+          - "options"
+          - "timestamp"
+        properties:
+          timestamp:
+            type: "string"
+            format: "date-time"
+            example: "07:23:43"
+            description: "Time when command was recorded."
+          fromHostIp:
+            type: "string"
+            example: "10.10.17.5"
+            description: "Ip address where command was submitted."
+          options:
+            type: "string"
+            example: "-p 25 -a 20.20.15.18"
+            description: "Valid command options"
+        description: "Command with valid syntax and semantic."
+  EntityErrorDetail:
+    type: "object"
+    properties:
+      entity:
+        type: "string"
+        example: "IDMGroup"
+        description: "Class of the entity."
+      identifier:
+        type: "string"
+        example: "id"
+        description: "Identifier of the entity."
+      identifierValue:
+        type: "object"
+        example: "1"
+        description: "Value of the identifier."
+      reason:
+        type: "string"
+        example: "Group with same name already exists."
+        description: "Detailed message of the exception"
+  GraphDTO:
+    type: "object"
+    required:
+      - "graph"
+    properties:
+      graph:
+        type: "string"
+        example: "'digraph {a -> b}'"
+        description: "Graph in DOT format."
+    description: "Graph in DOT format."
+  JavaApiError:
+    allOf:
+      - $ref: "#/definitions/ApiSubError"
+      - type: "object"
+        properties:
+          message:
+            type: "string"
+            example: "The IDMGroup could not be found in database (different for each\
             \ type of exception)."
-          description: "The requested URI path which caused error."
-        entity_error_detail:
-          description: "Entity detail related to the error."
-          $ref: "#/definitions/EntityErrorDetail"
-      description: "A detailed error from another Java mircorservice."
+            description: "The specific description of the ApiError."
+          timestamp:
+            type: "integer"
+            format: "int64"
+            example: "1574062900 (different for each type of exception)"
+            description: "The time when the exception occurred"
+          status:
+            type: "string"
+            example: "404 Not found (different for each type of exception)."
+            description: "The HTTP response status code"
+            enum:
+              - "CONTINUE"
+              - "SWITCHING_PROTOCOLS"
+              - "PROCESSING"
+              - "CHECKPOINT"
+              - "OK"
+              - "CREATED"
+              - "ACCEPTED"
+              - "NON_AUTHORITATIVE_INFORMATION"
+              - "NO_CONTENT"
+              - "RESET_CONTENT"
+              - "PARTIAL_CONTENT"
+              - "MULTI_STATUS"
+              - "ALREADY_REPORTED"
+              - "IM_USED"
+              - "MULTIPLE_CHOICES"
+              - "MOVED_PERMANENTLY"
+              - "FOUND"
+              - "MOVED_TEMPORARILY"
+              - "SEE_OTHER"
+              - "NOT_MODIFIED"
+              - "USE_PROXY"
+              - "TEMPORARY_REDIRECT"
+              - "PERMANENT_REDIRECT"
+              - "BAD_REQUEST"
+              - "UNAUTHORIZED"
+              - "PAYMENT_REQUIRED"
+              - "FORBIDDEN"
+              - "NOT_FOUND"
+              - "METHOD_NOT_ALLOWED"
+              - "NOT_ACCEPTABLE"
+              - "PROXY_AUTHENTICATION_REQUIRED"
+              - "REQUEST_TIMEOUT"
+              - "CONFLICT"
+              - "GONE"
+              - "LENGTH_REQUIRED"
+              - "PRECONDITION_FAILED"
+              - "PAYLOAD_TOO_LARGE"
+              - "REQUEST_ENTITY_TOO_LARGE"
+              - "URI_TOO_LONG"
+              - "REQUEST_URI_TOO_LONG"
+              - "UNSUPPORTED_MEDIA_TYPE"
+              - "REQUESTED_RANGE_NOT_SATISFIABLE"
+              - "EXPECTATION_FAILED"
+              - "I_AM_A_TEAPOT"
+              - "INSUFFICIENT_SPACE_ON_RESOURCE"
+              - "METHOD_FAILURE"
+              - "DESTINATION_LOCKED"
+              - "UNPROCESSABLE_ENTITY"
+              - "LOCKED"
+              - "FAILED_DEPENDENCY"
+              - "UPGRADE_REQUIRED"
+              - "PRECONDITION_REQUIRED"
+              - "TOO_MANY_REQUESTS"
+              - "REQUEST_HEADER_FIELDS_TOO_LARGE"
+              - "UNAVAILABLE_FOR_LEGAL_REASONS"
+              - "INTERNAL_SERVER_ERROR"
+              - "NOT_IMPLEMENTED"
+              - "BAD_GATEWAY"
+              - "SERVICE_UNAVAILABLE"
+              - "GATEWAY_TIMEOUT"
+              - "HTTP_VERSION_NOT_SUPPORTED"
+              - "VARIANT_ALSO_NEGOTIATES"
+              - "INSUFFICIENT_STORAGE"
+              - "LOOP_DETECTED"
+              - "BANDWIDTH_LIMIT_EXCEEDED"
+              - "NOT_EXTENDED"
+              - "NETWORK_AUTHENTICATION_REQUIRED"
+          errors:
+            type: "array"
+            example: "[ \\\"The requested resource was not found (different for each\
+            \ type of exception).\\\" ]"
+            description: "The list of main reasons of the ApiError."
+            items:
+              type: "string"
+          path:
+            type: "string"
+            example: "/kypo2-rest-user-and-group/api/v1/groups/1000 (different for each\
+            \ type of exception)."
+            description: "The requested URI path which caused error."
+          entity_error_detail:
+            description: "Entity detail related to the error."
+            $ref: "#/definitions/EntityErrorDetail"
+        description: "A detailed error from another Java mircorservice."
   LevelDTO:
     type: "object"
     required:
-    - "levelId"
+      - "levelId"
     properties:
       levelId:
         type: "integer"
@@ -674,24 +674,24 @@ definitions:
     description: "Level started by trainee"
   PythonApiError:
     allOf:
-    - $ref: "#/definitions/ApiSubError"
-    - type: "object"
-      properties:
-        detail:
-          type: "string"
-          example: "Sandbox could not be found."
-          description: "Detail message of the error."
-        parameters:
-          type: "object"
-          example: "name: sandbox"
-          description: "Parameters to specify details of the error."
-          additionalProperties:
+      - $ref: "#/definitions/ApiSubError"
+      - type: "object"
+        properties:
+          detail:
             type: "string"
-      description: "A detailed error from another Python mircorservice."
+            example: "Sandbox could not be found."
+            description: "Detail message of the error."
+          parameters:
+            type: "object"
+            example: "name: sandbox"
+            description: "Parameters to specify details of the error."
+            additionalProperties:
+              type: "string"
+        description: "A detailed error from another Python mircorservice."
   TraineeDTO:
     type: "object"
     required:
-    - "sandboxId"
+      - "sandboxId"
     properties:
       sandboxId:
         type: "integer"
@@ -702,9 +702,9 @@ definitions:
   WrongCommandsDTO:
     type: "object"
     required:
-    - "fromHostIp"
-    - "mistake"
-    - "options"
+      - "fromHostIp"
+      - "mistake"
+      - "options"
     properties:
       mistake:
         type: "string"

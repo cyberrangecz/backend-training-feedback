@@ -1,6 +1,5 @@
 package cz.muni.ics.kypo.training.feedback.service.api;
 
-import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionLevel;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.TrainingCommand;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.TrainingEvent;
 import cz.muni.ics.kypo.training.feedback.exceptions.CustomWebClientException;

@@ -1,10 +1,6 @@
 package cz.muni.ics.kypo.training.feedback.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -34,7 +30,7 @@ public class Edge {
     @EqualsAndHashCode.Exclude
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "options")
-    @Column(name="option")
+    @Column(name = "option")
     private List<String> options = new ArrayList<>();
     @NotEmpty
     @Column(name = "from_node", nullable = false)

@@ -1,16 +1,10 @@
 package cz.muni.ics.kypo.training.feedback.service;
 
+import cz.muni.ics.kypo.training.feedback.constants.GraphConstants;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionLevel;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionReferenceSolution;
 import cz.muni.ics.kypo.training.feedback.exceptions.InternalServerErrorException;
-import cz.muni.ics.kypo.training.feedback.constants.GraphConstants;
-import cz.muni.ics.kypo.training.feedback.model.Command;
-import cz.muni.ics.kypo.training.feedback.model.Edge;
-import cz.muni.ics.kypo.training.feedback.model.Graph;
-import cz.muni.ics.kypo.training.feedback.model.Level;
-import cz.muni.ics.kypo.training.feedback.model.Node;
-import cz.muni.ics.kypo.training.feedback.model.SubGraph;
-import cz.muni.ics.kypo.training.feedback.model.Trainee;
+import cz.muni.ics.kypo.training.feedback.model.*;
 import cz.muni.ics.kypo.training.feedback.service.api.ElasticsearchServiceApi;
 import lombok.RequiredArgsConstructor;
 import org.javatuples.Pair;
@@ -190,7 +184,7 @@ public class CreateTraineeGraphService {
             throw new InternalServerErrorException("Error when creating red edge. There cannot exist more then one for command");
         }
         //backward edge
-        if (subGraph.getEdges().stream().noneMatch(e -> e.getFromNode().equals(GraphConstants.NOT_IN_REFERENCE + nodeUnderFocus.getLabel()))){
+        if (subGraph.getEdges().stream().noneMatch(e -> e.getFromNode().equals(GraphConstants.NOT_IN_REFERENCE + nodeUnderFocus.getLabel()))) {
             subGraph.getEdges().add(Edge.builder()
                     .fromNode(GraphConstants.NOT_IN_REFERENCE + nodeUnderFocus.getLabel())
                     .toNode(nodeUnderFocus.getLabel())

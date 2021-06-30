@@ -21,6 +21,6 @@ public class MistakeService extends CRUDServiceImpl<Mistake, Long> {
     }
 
     public Optional<Mistake> getMistakeByMistakeType(MistakeType mistakeType) {
-        return  mistakeRepository.findMistakeByMistakeType(mistakeType);
+        return mistakeRepository.findMistakeByMistakeType(mistakeType);
     }
 }

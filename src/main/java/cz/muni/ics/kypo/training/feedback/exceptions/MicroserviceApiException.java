@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(reason = "Error when calling external service API")
 public class MicroserviceApiException extends RuntimeException {
-    private HttpStatus statusCode;
-    private ApiSubError apiSubError;
+    private final HttpStatus statusCode;
+    private final ApiSubError apiSubError;
 
     public MicroserviceApiException(String message, HttpStatus statusCode, ApiSubError apiSubError) {
         super(message + " " + apiSubError.getMessage());
