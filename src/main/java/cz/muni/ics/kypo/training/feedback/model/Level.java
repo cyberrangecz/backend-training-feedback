@@ -25,13 +25,14 @@ public class Level {
     @ToString.Exclude
     @NotNull
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, name = "trainee_id")
     private Trainee trainee;
+    @ToString.Exclude
     @NotNull
     @Fetch(value = FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "level",
             targetEntity = Command.class,
-            cascade = CascadeType.PERSIST,
+            cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
             fetch = FetchType.LAZY)
     private List<Command> commands;
     @NotNull

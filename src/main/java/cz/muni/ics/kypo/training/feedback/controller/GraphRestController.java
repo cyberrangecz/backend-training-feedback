@@ -21,41 +21,61 @@ public class GraphRestController {
     private final GraphFacade graphFacade;
 
     @ApiOperation(httpMethod = "GET",
-            value = "Get graph by trainee sandbox id",
+            value = "Get reference graph by training definition ID",
             response = GraphDTO.class,
-            nickname = "getGraphBySandboxId",
+            nickname = "getReferenceGraph",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Graph instance have been found.", response = GraphDTO.class),
-            @ApiResponse(code = 404, message = "Graph instance have not been found.", response = ApiError.class),
+            @ApiResponse(code = 200, message = "Reference graph have been found.", response = GraphDTO.class),
+            @ApiResponse(code = 404, message = "Reference graph have not been found.", response = ApiError.class),
             @ApiResponse(code = 500, message = "Unexpected condition was encountered.", response = ApiError.class)
     })
-    @GetMapping("/sandbox-id/{sandboxId}")
-    public ResponseEntity<GraphDTO> getGraph(@ApiParam(value = "The trainee sandbox id", required = true, type = "long") @PathVariable long sandboxId) {
-        return ResponseEntity.ok(graphFacade.getGraph(sandboxId));
+    @GetMapping("/training-definitions/{definitionId}")
+    public ResponseEntity<GraphDTO> getReferenceGraph(
+            @ApiParam(value = "ID of the training definition.", required = true, type = "long") @PathVariable Long definitionId
+    ) {
+        return ResponseEntity.ok(graphFacade.getReferenceGraph(definitionId));
     }
 
     @ApiOperation(httpMethod = "GET",
-            value = "Get graph by label",
-            notes = "For example for getting Reference graph or summary one.",
+            value = "Get trainee graph by trainee training run ID",
             response = GraphDTO.class,
-            nickname = "getGraphByLabel",
+            nickname = "getTraineeGraph",
             produces = MediaType.APPLICATION_JSON_VALUE
     )
     @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Graph instance have been found.", response = GraphDTO.class),
-            @ApiResponse(code = 404, message = "Graph instance have not been found.", response = ApiError.class),
+            @ApiResponse(code = 200, message = "Trainee graph have been found.", response = GraphDTO.class),
+            @ApiResponse(code = 404, message = "Trainee graph have not been found.", response = ApiError.class),
             @ApiResponse(code = 500, message = "Unexpected condition was encountered.", response = ApiError.class)
     })
-    @GetMapping("/label/{label}")
-    public ResponseEntity<GraphDTO> getGraph(@ApiParam(value = "Graph label", required = true, type = "string") @PathVariable String label) {
-        return ResponseEntity.ok(graphFacade.getGraph(label));
+    @GetMapping("/training-runs/{runId}")
+    public ResponseEntity<GraphDTO> getTraineeGraph(
+            @ApiParam(value = "ID of the training run.", required = true, type = "long") @PathVariable long runId
+    ) {
+        return ResponseEntity.ok(graphFacade.getTraineeGraph(runId));
+    }
+
+    @ApiOperation(httpMethod = "GET",
+            value = "Get summary graph by training instance ID",
+            response = GraphDTO.class,
+            nickname = "getSummaryGraph",
+            produces = MediaType.APPLICATION_JSON_VALUE
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Summary graph instance have been found.", response = GraphDTO.class),
+            @ApiResponse(code = 404, message = "Summary graph have not been found.", response = ApiError.class),
+            @ApiResponse(code = 500, message = "Unexpected condition was encountered.", response = ApiError.class)
+    })
+    @GetMapping("/training-instances/{instanceId}")
+    public ResponseEntity<GraphDTO> getSummaryGraph(
+            @ApiParam(value = "Id of the training instance.", required = true, type = "long") @PathVariable Long instanceId
+    ) {
+        return ResponseEntity.ok(graphFacade.getSummaryGraph(instanceId));
     }
 
     @ApiOperation(httpMethod = "POST",
-            value = "Create reference graph",
-            notes = "This should be done only once, before first one user logged in.",
+            value = "Create reference graph for given training definition",
             nickname = "createReferenceGraph",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
@@ -63,15 +83,16 @@ public class GraphRestController {
             @ApiResponse(code = 200, message = "Reference graph successfully created."),
             @ApiResponse(code = 500, message = "Unexpected condition was encountered.", response = ApiError.class)
     })
-    @PostMapping("/reference-graph")
-    public ResponseEntity<GraphDTO> createReferenceGraph(@ApiParam(value = "Reference solutions of levels.")
-                                                         @RequestBody List<DefinitionLevel> definitionLevelList) {
-        return ResponseEntity.ok(graphFacade.createReferenceGraph(definitionLevelList));
+    @PostMapping("/training-definitions/{definitionId}")
+    public ResponseEntity<GraphDTO> createReferenceGraph(
+            @ApiParam(value = "ID of the training definition.", required = true, type = "long") @PathVariable Long definitionId,
+            @ApiParam(value = "Reference solutions of levels.") @RequestBody List<DefinitionLevel> definitionLevelList
+    ) {
+        return ResponseEntity.ok(graphFacade.createReferenceGraph(definitionId, definitionLevelList));
     }
 
     @ApiOperation(httpMethod = "POST",
             value = "Create summary graph",
-            notes = "This should be done only once after all trainees end up their training",
             nickname = "createSummaryGraph",
             consumes = MediaType.APPLICATION_JSON_VALUE
     )
@@ -80,9 +101,101 @@ public class GraphRestController {
             @ApiResponse(code = 404, message = "Trainees graphs needed for creation have been not found", response = ApiError.class),
             @ApiResponse(code = 500, message = "Unexpected condition was encountered.", response = ApiError.class)
     })
-    @PostMapping("/summary-graph")
-    public ResponseEntity<GraphDTO> createSummaryGraph() {
-        return ResponseEntity.ok(graphFacade.createSummaryGraph());
+    @PostMapping("/training-definitions/{definitionId}/training-instances/{instanceId}")
+    public ResponseEntity<GraphDTO> createSummaryGraph(
+            @ApiParam(value = "ID of the training definition.", required = true, type = "long") @PathVariable Long definitionId,
+            @ApiParam(value = "ID of the training instance.", required = true, type = "long") @PathVariable Long instanceId
+    ) {
+        return ResponseEntity.ok(graphFacade.createSummaryGraph(definitionId, instanceId));
     }
 
+    @ApiOperation(httpMethod = "POST",
+            value = "Create trainee graph with command analysis",
+            notes = "This should be done only once for every user",
+            nickname = "createTraineeGraph",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Trainee graph successfully created."),
+            @ApiResponse(code = 404, message = "Training run with given ID not found.", response = ApiError.class),
+            @ApiResponse(code = 500, message = "Unexpected condition was encountered.", response = ApiError.class)
+    })
+    @PostMapping("/training-definitions/{definitionId}/training-instances/{instanceId}/training-runs/{runId}")
+    public ResponseEntity<Void> createTraineeGraph(
+            @ApiParam(value = "The training definition ID", required = true) @PathVariable Long definitionId,
+            @ApiParam(value = "The training instance ID", required = true) @PathVariable Long instanceId,
+            @ApiParam(value = "The trainee run ID", required = true) @PathVariable Long runId,
+            @ApiParam(value = "Reference solutions of levels", required = true) @RequestBody List<DefinitionLevel> definitionLevels
+    ) {
+        graphFacade.createTraineeGraph(definitionId, instanceId, runId, definitionLevels);
+        return ResponseEntity.noContent().build();
+    }
+
+    @ApiOperation(httpMethod = "DELETE",
+            value = "Delete reference graph",
+            nickname = "deleteReferenceGraph",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Reference graph successfully deleted."),
+            @ApiResponse(code = 500, message = "Unexpected condition was encountered.", response = ApiError.class)
+    })
+    @DeleteMapping("/reference/training-definitions/{definitionId}")
+    public ResponseEntity<GraphDTO> deleteReferenceGraph(
+            @ApiParam(value = "ID of the training definition.", required = true, type = "long") @PathVariable Long definitionId
+    ) {
+        graphFacade.deleteReferenceGraph(definitionId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @ApiOperation(httpMethod = "DELETE",
+            value = "Delete all graphs by training instance",
+            nickname = "deleteGraphsByTrainingInstance",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "All graphs created for trianing instance successfully deleted."),
+            @ApiResponse(code = 500, message = "Unexpected condition was encountered.", response = ApiError.class)
+    })
+    @DeleteMapping("/training-instances/{instanceId}")
+    public ResponseEntity<GraphDTO> deleteGraphsByTrainingInstance(
+            @ApiParam(value = "ID of the training instance.", required = true, type = "long") @PathVariable Long instanceId
+    ) {
+        graphFacade.deleteAllByTrainingInstance(instanceId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @ApiOperation(httpMethod = "DELETE",
+            value = "Delete summary graph",
+            nickname = "deleteSummaryGraph",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Trainee graph successfully deleted."),
+            @ApiResponse(code = 500, message = "Unexpected condition was encountered.", response = ApiError.class)
+    })
+    @DeleteMapping("/summary/training-instances/{instanceId}")
+    public ResponseEntity<GraphDTO> deleteSummaryGraph(
+            @ApiParam(value = "ID of the training instance.", required = true, type = "long") @PathVariable Long instanceId
+    ) {
+        graphFacade.deleteSummaryGraph(instanceId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @ApiOperation(httpMethod = "DELETE",
+            value = "Delete trainee graph",
+            nickname = "deleteTraineeGraph",
+            consumes = MediaType.APPLICATION_JSON_VALUE
+    )
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Trainee graph successfully deleted."),
+            @ApiResponse(code = 500, message = "Unexpected condition was encountered.", response = ApiError.class)
+    })
+    @DeleteMapping("/trainee/training-runs/{runId}")
+    public ResponseEntity<GraphDTO> deleteTraineeGraph(
+            @ApiParam(value = "ID of the training instance.", required = true, type = "long") @PathVariable Long runId
+    ) {
+        graphFacade.deleteTraineeGraph(runId);
+        return ResponseEntity.noContent().build();
+    }
 }

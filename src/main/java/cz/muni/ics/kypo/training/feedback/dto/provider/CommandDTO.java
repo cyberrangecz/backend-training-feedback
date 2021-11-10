@@ -2,7 +2,9 @@ package cz.muni.ics.kypo.training.feedback.dto.provider;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.deser.LocalDateDeserializer;
+import cz.muni.ics.kypo.training.feedback.converter.DurationConverter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
@@ -10,6 +12,7 @@ import lombok.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Data
@@ -25,6 +28,9 @@ public class CommandDTO extends AbstractCommandDTO {
     @JsonDeserialize(using = LocalDateDeserializer.class)
     @JsonFormat(pattern = "hh:mm:ss")
     private LocalDateTime timestamp;
+    @ApiModelProperty(value = "Training time when command was recorded.", required = true, example = "07:23:43")
+    @JsonSerialize(converter = DurationConverter.class)
+    private Duration trainingTime;
     @NotEmpty
     @ApiModelProperty(value = "Ip address where command was submitted.", required = true, example = "10.10.17.5")
     private String fromHostIp;

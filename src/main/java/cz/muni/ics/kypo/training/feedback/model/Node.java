@@ -22,7 +22,7 @@ public class Node {
     private Long id;
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, name = "sub_graph_id")
     @EqualsAndHashCode.Exclude
     private SubGraph subGraph;
     @NotEmpty
@@ -41,5 +41,15 @@ public class Node {
     @Override
     public String toString() {
         return String.format("\"%s\" [label=\"%s\" style=\"%s\" shape=\"%s\" fillcolor=\"%s\"]%n", name != null ? name : label, label, GraphConstants.NODE_STYLE, shape, color);
+    }
+
+    @Override
+    protected Node clone() {
+        Node clonedNode = new Node();
+        clonedNode.setColor(this.color);
+        clonedNode.setLabel(this.label);
+        clonedNode.setName(this.name);
+        clonedNode.setShape(this.shape);
+        return clonedNode;
     }
 }

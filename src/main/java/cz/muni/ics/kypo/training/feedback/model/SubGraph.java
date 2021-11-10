@@ -10,6 +10,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "sub_graph")
@@ -27,22 +28,19 @@ public class SubGraph {
     private Long id;
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, name = "graph_id")
     private Graph graph;
-    @NotEmpty
     @Builder.Default
     @Fetch(value = FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "subGraph",
             targetEntity = Node.class,
-            cascade = CascadeType.PERSIST,
+            cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
             fetch = FetchType.EAGER)
     private List<Node> nodes = new ArrayList<>();
-    @NotEmpty
     @Builder.Default
     @Fetch(value = FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "subGraph",
-            targetEntity = Edge.class,
-            cascade = CascadeType.PERSIST,
+            cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
             fetch = FetchType.EAGER)
     private List<Edge> edges = new ArrayList<>();
     @Builder.Default
@@ -62,5 +60,25 @@ public class SubGraph {
         edges.forEach(edge -> ret.append(edge.toString()));
         ret.append(GraphConstants.GRAPH_FOOTER);
         return ret.toString();
+    }
+
+    @Override
+    public SubGraph clone() {
+        SubGraph clonedSubGraph = new SubGraph();
+        clonedSubGraph.setColor(this.color);
+        clonedSubGraph.setLabel(this.label);
+        clonedSubGraph.setEdges(this.edges.stream()
+                .map(edge -> {
+                    Edge clonedEdge = edge.clone();
+                    clonedEdge.setSubGraph(clonedSubGraph);
+                    return clonedEdge;
+                }).collect(Collectors.toList()));
+        clonedSubGraph.setNodes(this.nodes.stream()
+                .map(node -> {
+                    Node clonedNode = node.clone();
+                    clonedNode.setSubGraph(clonedSubGraph);
+                    return clonedNode;
+                }).collect(Collectors.toList()));
+        return clonedSubGraph;
     }
 }

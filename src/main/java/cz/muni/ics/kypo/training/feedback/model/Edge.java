@@ -6,7 +6,9 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -23,15 +25,18 @@ public class Edge {
     private Long id;
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, name = "sub_graph_id")
     @EqualsAndHashCode.Exclude
     private SubGraph subGraph;
     @Builder.Default
     @EqualsAndHashCode.Exclude
     @ElementCollection(fetch = FetchType.EAGER)
-    @CollectionTable(name = "options")
+    @CollectionTable(
+            name = "options",
+            joinColumns = {@JoinColumn(name = "edge_id")}
+    )
     @Column(name = "option")
-    private List<String> options = new ArrayList<>();
+    private Set<String> options = new HashSet<>();
     @NotEmpty
     @Column(name = "from_node", nullable = false)
     private String fromNode;
@@ -86,7 +91,20 @@ public class Edge {
             return "";
         }
         return "Type: " + type + " %n ";
-
     }
 
+    @Override
+    protected Edge clone() {
+        Edge clonedEdge = new Edge();
+        clonedEdge.setColor(this.color);
+        clonedEdge.setLength(this.length);
+        clonedEdge.setStyle(this.style);
+        clonedEdge.setFromNode(this.fromNode);
+        clonedEdge.setToNode(this.toNode);
+        clonedEdge.setTool(this.tool);
+        clonedEdge.setType(this.type);
+        clonedEdge.setWeight(this.weight);
+        clonedEdge.setOptions(new HashSet<>(this.options));
+        return clonedEdge;
+    }
 }

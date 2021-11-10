@@ -1,6 +1,7 @@
 package cz.muni.ics.kypo.training.feedback.model;
 
 import cz.muni.ics.kypo.training.feedback.constants.GraphConstants;
+import cz.muni.ics.kypo.training.feedback.enums.GraphType;
 import lombok.*;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -24,17 +25,15 @@ public class Graph {
     @SequenceGenerator(name = "graphGenerator", sequenceName = "graph_id_seq")
     @Column(name = "graph_id", nullable = false, unique = true)
     private Long id;
-    @OneToOne(mappedBy = "traineeGraph",
-            optional = true,
-            cascade = CascadeType.PERSIST,
+    @OneToOne(optional = true,
+            cascade = { CascadeType.PERSIST , CascadeType.REMOVE },
             fetch = FetchType.EAGER)
+    @JoinColumn(name = "trainee_id")
     private Trainee trainee;
     @NotEmpty
     @Builder.Default
-    @Fetch(value = FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "graph",
-            targetEntity = SubGraph.class,
-            cascade = CascadeType.PERSIST,
+            cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
             fetch = FetchType.EAGER)
     private List<SubGraph> subGraphs = new ArrayList<>();
 
@@ -49,6 +48,15 @@ public class Graph {
     @Builder.Default
     @Column(name = "font_size", nullable = false)
     private Double fontSize = 30.0;
+    @NotNull
+    @Column(name = "training_definition_id")
+    private Long trainingDefinitionId;
+    @Column(name = "training_instance_id")
+    private Long trainingInstanceId;
+    @NotNull
+    @Enumerated(EnumType.STRING)
+    @Column(name = "graph_type", nullable = false)
+    private GraphType graphType;
 
     public String toString() {
         String header = String.format("%s { %n tooltip=\" \" %n graph [fontsize=\"%f\"]%n",

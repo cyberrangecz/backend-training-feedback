@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.validation.constraints.NotNull;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
@@ -20,6 +21,9 @@ public class TrainingCommand {
 
     @NotNull
     private LocalDateTime timestamp;
+
+    @NotNull
+    private Duration trainingTime;
 
     @JsonProperty("cmd_type")
     @NotNull

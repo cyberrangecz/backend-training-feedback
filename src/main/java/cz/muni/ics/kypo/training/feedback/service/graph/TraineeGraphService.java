@@ -1,64 +1,120 @@
-package cz.muni.ics.kypo.training.feedback.service;
+package cz.muni.ics.kypo.training.feedback.service.graph;
 
 import cz.muni.ics.kypo.training.feedback.constants.GraphConstants;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionLevel;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionReferenceSolution;
+import cz.muni.ics.kypo.training.feedback.dto.resolver.TrainingCommand;
+import cz.muni.ics.kypo.training.feedback.dto.resolver.TrainingEvent;
+import cz.muni.ics.kypo.training.feedback.enums.GraphType;
+import cz.muni.ics.kypo.training.feedback.exceptions.EntityErrorDetail;
+import cz.muni.ics.kypo.training.feedback.exceptions.EntityNotFoundException;
 import cz.muni.ics.kypo.training.feedback.exceptions.InternalServerErrorException;
 import cz.muni.ics.kypo.training.feedback.model.*;
+import cz.muni.ics.kypo.training.feedback.repository.GraphRepository;
+import cz.muni.ics.kypo.training.feedback.service.CRUDServiceImpl;
+import cz.muni.ics.kypo.training.feedback.service.TraineeService;
 import cz.muni.ics.kypo.training.feedback.service.api.ElasticsearchServiceApi;
 import lombok.RequiredArgsConstructor;
 import org.javatuples.Pair;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class CreateTraineeGraphService {
+public class TraineeGraphService extends CRUDServiceImpl<Graph, Long> {
 
+    private final GraphRepository graphRepository;
+    private final TraineeService traineeService;
     private final ElasticsearchServiceApi elasticsearchServiceApi;
+
+    @Override
+    public JpaRepository<Graph, Long> getDAO() {
+        return graphRepository;
+    }
 
     private final List<String> achievedNodesLabels = new ArrayList<>();
 
-    public Graph createTraineeGraph(Trainee trainee, Long sandboxId, List<DefinitionLevel> definitionLevels) {
-        Graph graph = Graph.builder().trainee(trainee).label(GraphConstants.TRAINEE_GRAPH_LABEL + sandboxId).build();
-        long visibleLevelId = GraphConstants.FIRST_LEVEL_ID;
-
-        for (Level level : trainee.getLevels()) {
-            Node lastAchievedNode = getLastAchievedNode(graph);
-            List<List<DefinitionReferenceSolution>> levelSolutionsList = definitionLevels.stream()
-                    .filter(l -> l.getLevelId().equals(level.getId()))
-                    .map(DefinitionLevel::getDefinitionReferenceSolutions)
-                    .collect(Collectors.toList());
-            if (levelSolutionsList.size() == 1) {
-                List<DefinitionReferenceSolution> levelSolutions = levelSolutionsList.get(0);
-                SubGraph newSubgraph = processLevelCommands(level, levelSolutions, visibleLevelId++, lastAchievedNode);
-                newSubgraph.setGraph(graph);
-                graph.getSubGraphs().add(newSubgraph);
-            } else if (levelSolutionsList.size() > 1) {
-                throw new InternalServerErrorException("Error when creating Trainee graph: Exist more reference solution levels with same id.");
-            }
+    public Graph getTraineeGraph(Long trainingRunId) {
+        Graph graph = graphRepository.findTraineeGraph(trainingRunId);
+        if (graph == null) {
+            throw new EntityNotFoundException(new EntityErrorDetail(
+                    Graph.class, "Trainee graph for trainee with training run id: " + trainingRunId.toString() + " not found.")
+            );
         }
         return graph;
     }
 
-    private SubGraph processLevelCommands(Level level, List<DefinitionReferenceSolution> levelSolutions, Long visibleLevelId, Node lastAchievedNode) {
+    public boolean existsTraineeGraph(Long runId) {
+        return this.graphRepository.existsByTraineeTrainingRunId(runId);
+    }
+
+    public void deleteTraineeGraph(Long runId) {
+        this.graphRepository.deleteByTraineeTrainingRunId(runId);
+    }
+
+    public void deleteTraineeGraphsByTrainingInstance(Long instanceId) {
+        this.graphRepository.deleteByTrainingInstanceIdAndGraphType(instanceId, GraphType.TRAINEE_GRAPH);
+    }
+
+    public Graph createTraineeGraph(Long definitionId, Long instanceId, Long runId,
+                                    List<DefinitionLevel> definitionLevels) {
+        List<TrainingEvent> events = elasticsearchServiceApi.getTrainingEventsByTrainingRunId(definitionId, instanceId, runId);
+        Long sandboxId = events.get(0).getSandboxId();
+        List<TrainingCommand> commands = elasticsearchServiceApi.getTrainingCommandsBySandboxId(sandboxId);
+
+        LocalDateTime trainingStartTime = events.get(0).getTimestamp();
+        commands.forEach(c -> c.setTrainingTime(Duration.between(trainingStartTime, c.getTimestamp())));
+
+        Trainee trainee = this.traineeService.createTraineeEntity(runId, events, commands);
+
+        Graph graph = Graph.builder()
+                .trainee(trainee)
+                .label(GraphConstants.TRAINEE_GRAPH_LABEL + sandboxId)
+                .graphType(GraphType.TRAINEE_GRAPH)
+                .trainingDefinitionId(definitionId)
+                .trainingInstanceId(instanceId)
+                .build();
+        trainee.setTraineeGraph(graph);
+
+        Map<Long, DefinitionLevel> definitionLevelById = definitionLevels.stream()
+                .collect(Collectors.toMap(DefinitionLevel::getLevelId, Function.identity()));
+        for (Level level : trainee.getLevels()) {
+            Node lastAchievedNode = getLastAchievedNode(graph);
+            DefinitionLevel definitionLevel = definitionLevelById.get(level.getLevelRefId());
+            if (definitionLevel == null) {
+                continue;
+            }
+            SubGraph newSubgraph = processLevelCommands(level, definitionLevel.getDefinitionReferenceSolutions(), definitionLevel.getLevelOrder(), lastAchievedNode);
+            newSubgraph.setGraph(graph);
+            graph.getSubGraphs().add(newSubgraph);
+        }
+        return graphRepository.save(graph);
+    }
+
+    private SubGraph processLevelCommands(Level level, List<DefinitionReferenceSolution> levelSolutions, Integer visibleLevelOrder, Node lastAchievedNode) {
         List<Command> commands = level.getCommands();
-        SubGraph subGraph = SubGraph.builder().label("Level: " + visibleLevelId.toString()).build();
+        SubGraph subGraph = SubGraph.builder().label("Level: " + visibleLevelOrder.toString()).build();
         Node startNode = Node.builder()
                 .subGraph(subGraph)
                 .color(GraphConstants.VIOLET)
                 .shape(GraphConstants.DIAMOND)
-                .label("level_" + visibleLevelId + "_start")
+                .label("level_" + visibleLevelOrder + "_start")
                 .build();
         subGraph.getNodes().add(startNode);
         if (lastAchievedNode != null) {
             subGraph.getEdges().add(Edge.builder()
                     .subGraph(subGraph)
-                    .toNode("level_" + visibleLevelId + "_start")
+                    .toNode("level_" + visibleLevelOrder + "_start")
                     .fromNode(lastAchievedNode.getLabel())
                     .build());
         }
@@ -122,7 +178,7 @@ public class CreateTraineeGraphService {
                     .toNode(newNodeName)
                     .subGraph(subGraph)
                     .tool(command.getCmd())
-                    .options(Collections.singletonList(command.getOptions()))
+                    .options(Collections.singleton(command.getOptions()))
                     .type(command.getCommandType())
                     .color(GraphConstants.YELLOW)
                     .build();
@@ -136,7 +192,7 @@ public class CreateTraineeGraphService {
                     .subGraph(subGraph)
                     .style("dashed")
                     .tool(command.getCmd())
-                    .options(Collections.singletonList(command.getOptions()))
+                    .options(Collections.singleton(command.getOptions()))
                     .type(command.getCommandType())
                     .color(GraphConstants.YELLOW)
                     .build();
@@ -213,7 +269,7 @@ public class CreateTraineeGraphService {
                     .subGraph(subGraph)
                     .color(GraphConstants.GREEN)
                     .tool(command.getCmd())
-                    .options(Collections.singletonList(command.getOptions()))
+                    .options(Collections.singleton(command.getOptions()))
                     .type(command.getCommandType())
                     .build();
             if (!subGraph.getEdges().contains(newEdge) && !newEdge.getFromNode().equals(newEdge.getToNode()))
@@ -224,7 +280,7 @@ public class CreateTraineeGraphService {
                     .toNode(newNode.getLabel())
                     .subGraph(subGraph)
                     .tool(command.getCmd())
-                    .options(Collections.singletonList(command.getOptions()))
+                    .options(Collections.singleton(command.getOptions()))
                     .type(command.getCommandType())
                     .color(GraphConstants.GREEN)
                     .style("dashed")
