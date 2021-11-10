@@ -9,16 +9,15 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotEmpty;
 
-@ApiModel(value = "AbstractCommandDTO", subTypes = {AggregatedCommandDTO.class, WrongCommandDTO.class, CommandDTO.class},
-        description = "AggregatedCommandDTO, WrongCommandsDTO, CommandDTO")
+@ApiModel(value = "AbstractCommandDTO", subTypes = {AggregatedCommandsDTO.class, CommandDTO.class},
+        description = "AggregatedCommandsDTO, CommandDTO")
 @JsonSubTypes({
-        @JsonSubTypes.Type(value = AggregatedCommandDTO.class, name = "AggregatedCommandDTO"),
-        @JsonSubTypes.Type(value = WrongCommandDTO.class, name = "WrongCommandsDTO"),
+        @JsonSubTypes.Type(value = AggregatedCommandsDTO.class, name = "AggregatedCommandsDTO"),
         @JsonSubTypes.Type(value = CommandDTO.class, name = "CommandDTO")})
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class AbstractCommandDTO {
+public abstract class AbstractCommandDTO {
 
     @ApiModelProperty(value = "Distinguish tool/command line  in which command ran.", required = true, example = "BASH")
     @NotEmpty

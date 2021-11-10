@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Entity
@@ -23,15 +24,18 @@ public class Command {
     @NotNull
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = false, name = "level_id")
     private Level level;
     @ManyToOne(fetch = FetchType.EAGER,
             cascade = CascadeType.PERSIST)
-    @JoinColumn(nullable = true)
+    @JoinColumn(nullable = true, name = "mistake_id")
     private Mistake mistake;
     @NotNull
-    @Column(columnDefinition = "TIMESTAMP", name = "timestamp")
+    @Column(name = "timestamp")
     private LocalDateTime timestamp;
+    @NotNull
+    @Column(name = "training_time")
+    private Duration trainingTime;
     @NotEmpty
     @Column(name = "cmd", nullable = false)
     private String cmd;

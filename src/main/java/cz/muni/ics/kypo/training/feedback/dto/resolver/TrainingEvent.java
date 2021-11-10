@@ -17,6 +17,18 @@ public class TrainingEvent {
     @JsonProperty("sandbox_id")
     private Long sandboxId;
 
+    @JsonProperty("training_run_id")
+    private Long trainingRunId;
+
+    @JsonProperty("training_instance_id")
+    private Long trainingInstanceId;
+
+    @JsonProperty("training_definition_id")
+    private Long trainingDefinitionId;
+
+    @JsonProperty("user_ref_id")
+    private Long userRefId;
+
     private String type;
 
     @JsonDeserialize(using = MillisOrLocalDateTimeDeserializer.class)

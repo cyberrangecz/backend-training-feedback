@@ -21,19 +21,25 @@ public class Trainee {
     @SequenceGenerator(name = "traineeGenerator", sequenceName = "trainee_id_seq")
     @Column(name = "trainee_id", nullable = false, unique = true)
     private Long id;
+    @ToString.Exclude
     @NotNull
-    @OneToOne(cascade = CascadeType.PERSIST,
-            fetch = FetchType.LAZY)
-    @JoinColumn(nullable = true)
+    @OneToOne(mappedBy = "trainee",
+              cascade = { CascadeType.PERSIST, CascadeType.REMOVE},
+              fetch = FetchType.LAZY)
     private Graph traineeGraph;
+    @ToString.Exclude
     @NotEmpty
     @Builder.Default
     @OneToMany(mappedBy = "trainee",
-            targetEntity = Level.class,
-            cascade = CascadeType.PERSIST,
-            fetch = FetchType.LAZY)
+            cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
+             fetch = FetchType.LAZY)
     private List<Level> levels = new ArrayList<>();
     @NotNull
+    @Column(name = "training_run_id", unique = true)
+    private Long trainingRunId;
+    @NotNull
+    @Column(name = "user_ref_id", unique = true)
+    private Long userRefId;
     @Column(name = "sandbox_id", unique = true)
     private Long sandboxId;
 }

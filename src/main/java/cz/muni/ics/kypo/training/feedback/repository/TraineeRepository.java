@@ -4,10 +4,13 @@ import cz.muni.ics.kypo.training.feedback.model.Trainee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface TraineeRepository extends JpaRepository<Trainee, Long> {
 
-    Optional<Trainee> findTraineeBySandboxId(Long sandboxId);
+    Optional<Trainee> findTraineeByTrainingRunId(Long trainingRunId);
+
+    List<Trainee> findAllByTraineeGraphTrainingInstanceId(Long trainingInstanceId);
 }

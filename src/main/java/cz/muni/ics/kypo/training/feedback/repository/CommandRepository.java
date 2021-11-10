@@ -8,18 +8,20 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CommandRepository extends JpaRepository<Command, Long> {
-    List<Command> findByLevelIdAndLevelTraineeSandboxId(Long levelId, Long sandboxId);
+public interface CommandRepository extends JpaRepository<Command, Long>, CommandRepositoryCustom {
+    List<Command> findByLevelIdAndLevelTraineeTrainingRunId(Long trainingRunId, Long sandboxId);
 
-    List<Command> findByLevelTraineeSandboxId(Long sandboxId);
+    List<Command> findByLevelTraineeTrainingRunIdOrderByTrainingTime(Long trainingRunId);
 
-    List<Command> findByLevelTraineeSandboxIdAndMistakeMistakeType(Long sandboxId, MistakeType mistakeType);
+    List<Command> findByLevelTraineeTrainingRunIdAndMistakeMistakeType(Long trainingRunId, MistakeType mistakeType);
 
-    List<Command> findByLevelTraineeSandboxIdAndMistakeIsNotNull(Long sandboxId);
+    List<Command> findByLevelTraineeTrainingRunIdAndMistakeIsNotNull(Long trainingRunId);
 
     List<Command> findByMistakeIsNotNull();
 
     List<Command> findByMistakeIsNull();
+
+    List<Command> findByLevelTraineeTrainingRunIdInAndMistakeIsNull(List<Long> trainingRunId);
 
     List<Command> findByMistakeMistakeType(MistakeType mistakeType);
 

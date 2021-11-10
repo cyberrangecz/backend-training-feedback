@@ -24,7 +24,7 @@ public class ElasticsearchServiceApi {
     public List<TrainingCommand> getTrainingCommands(Long poolId) {
         try {
             return elasticsearchServiceWebClient
-                    .delete()
+                    .get()
                     .uri("/pools/{poolId}", poolId)
                     .retrieve()
                     .bodyToMono(new ParameterizedTypeReference<List<TrainingCommand>>() {
@@ -38,8 +38,8 @@ public class ElasticsearchServiceApi {
     public List<TrainingCommand> getTrainingCommandsBySandboxId(Long sandboxId) {
         try {
             return elasticsearchServiceWebClient
-                    .delete()
-                    .uri("/sandboxes/{sandboxId}", sandboxId)
+                    .get()
+                    .uri("/training-platform-commands/sandboxes/{sandboxId}", sandboxId)
                     .retrieve()
                     .bodyToMono(new ParameterizedTypeReference<List<TrainingCommand>>() {
                     })
@@ -54,24 +54,17 @@ public class ElasticsearchServiceApi {
     }
 
 
-    public List<TrainingEvent> getAllTrainingEvents(Long definitionId, Long instanceId) {
+    public List<TrainingEvent> getTrainingEventsByTrainingRunId(Long definitionId, Long instanceId, Long runId) {
         try {
             return elasticsearchServiceWebClient
-                    .delete()
-                    .uri("training-definitions/{definitionId}/training-instances/{instanceId}", definitionId, instanceId)
+                    .get()
+                    .uri("/training-platform-events/training-definitions/{definitionId}/training-instances/{instanceId}/training-runs/{runId}", definitionId, instanceId, runId)
                     .retrieve()
                     .bodyToMono(new ParameterizedTypeReference<List<TrainingEvent>>() {
                     })
                     .block();
         } catch (CustomWebClientException ex) {
-            throw new MicroserviceApiException("Error when calling Elasticsearch API to get training events for particular instance (ID: " + instanceId + ").", ex);
+            throw new MicroserviceApiException("Error when calling Elasticsearch API to get training events for particular training run (ID: " + runId + ").", ex);
         }
-    }
-
-    public List<TrainingEvent> getTrainingEventsBySandboxId(Long definitionId, Long instanceId, Long sandboxId) {
-        List<TrainingEvent> allEvents = getAllTrainingEvents(definitionId, instanceId);
-        return allEvents.stream()
-                .filter(e -> e.getSandboxId().equals(sandboxId))
-                .collect(Collectors.toList());
     }
 }

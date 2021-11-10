@@ -16,4 +16,6 @@ public class DefinitionLevel {
     private List<DefinitionReferenceSolution> definitionReferenceSolutions;
     @JsonProperty("id")
     private Long levelId;
+    @JsonProperty("order")
+    private Integer levelOrder;
 }
