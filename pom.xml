@@ -7,7 +7,7 @@
     <groupId>cz.muni.ics.kypo</groupId>
     <artifactId>kypo-training-feedback</artifactId>
     <name>training-feedback</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <description>Automated feedback application for KYPO trainings</description>
 
     <parent>
