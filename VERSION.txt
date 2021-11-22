@@ -1,1 +1,2 @@
+1.0.1 Added Gitlab CI.
 1.0.0 Initial version, integrated with KYPO CRP.
