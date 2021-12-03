@@ -1,6 +1,7 @@
 package cz.muni.ics.kypo.training.feedback.model;
 
 import lombok.*;
+import org.apache.commons.text.StringEscapeUtils;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -83,7 +84,7 @@ public class Edge {
         if (options == null || options.isEmpty()) {
             return "";
         }
-        return "Opts: " + options;
+        return "Opts: " + StringEscapeUtils.escapeJava(options.toString());
     }
 
     private String typeToString() {
