@@ -1,3 +1,4 @@
+1.0.3 Bugfix - escape command options to prevent bad graph definition.
 1.0.2 Added SpringBoot Maven plugin to create executable .jar file.
 1.0.1 Added Gitlab CI.
 1.0.0 Initial version, integrated with KYPO CRP.
