@@ -30,6 +30,8 @@
         <swagger-annotations.version>1.5.22</swagger-annotations.version>
         <swagger.directory>${basedir}/doc-files</swagger.directory>
         <swagger.skip>true</swagger.skip>
+        <!-- added to avoid log4j2 vulnerability CVE-2021-44228 -->
+        <log4j2.version>2.15.0</log4j2.version>
     </properties>
 
     <dependencyManagement>
