@@ -24,15 +24,15 @@ public class Trainee {
     @ToString.Exclude
     @NotNull
     @OneToOne(mappedBy = "trainee",
-              cascade = { CascadeType.PERSIST, CascadeType.REMOVE},
-              fetch = FetchType.LAZY)
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY)
     private Graph traineeGraph;
     @ToString.Exclude
     @NotEmpty
     @Builder.Default
     @OneToMany(mappedBy = "trainee",
-            cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
-             fetch = FetchType.LAZY)
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            fetch = FetchType.LAZY)
     private List<Level> levels = new ArrayList<>();
     @NotNull
     @Column(name = "training_run_id", unique = true)

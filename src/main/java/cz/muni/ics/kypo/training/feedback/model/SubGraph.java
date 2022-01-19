@@ -34,13 +34,13 @@ public class SubGraph {
     @Fetch(value = FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "subGraph",
             targetEntity = Node.class,
-            cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.EAGER)
     private List<Node> nodes = new ArrayList<>();
     @Builder.Default
     @Fetch(value = FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "subGraph",
-            cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.EAGER)
     private List<Edge> edges = new ArrayList<>();
     @Builder.Default

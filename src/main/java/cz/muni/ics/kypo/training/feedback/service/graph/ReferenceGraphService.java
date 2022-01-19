@@ -1,6 +1,5 @@
 package cz.muni.ics.kypo.training.feedback.service.graph;
 
-import cz.muni.ics.kypo.training.feedback.annotations.transactions.TransactionalWO;
 import cz.muni.ics.kypo.training.feedback.constants.GraphConstants;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionLevel;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionReferenceSolution;
@@ -16,7 +15,6 @@ import cz.muni.ics.kypo.training.feedback.service.CRUDServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -55,7 +53,7 @@ public class ReferenceGraphService extends CRUDServiceImpl<Graph, Long> {
                         .label(GraphConstants.START_NODE_LABEL)
                         .subGraph(subgraph)
                         .build());
-                if(!level.getDefinitionReferenceSolutions().isEmpty()) {
+                if (!level.getDefinitionReferenceSolutions().isEmpty()) {
                     DefinitionReferenceSolution firstSolution = level.getDefinitionReferenceSolutions().get(0);
                     List<String> commandList = Arrays.asList(firstSolution.getCmd().split("\\s"));
                     subgraph.getEdges().add(Edge.builder()
@@ -134,6 +132,6 @@ public class ReferenceGraphService extends CRUDServiceImpl<Graph, Long> {
     }
 
     public boolean existsReferenceGraph(Long definitionId) {
-       return this.graphRepository.existsByTrainingDefinitionIdAndGraphType(definitionId, GraphType.REFERENCE_GRAPH);
+        return this.graphRepository.existsByTrainingDefinitionIdAndGraphType(definitionId, GraphType.REFERENCE_GRAPH);
     }
 }

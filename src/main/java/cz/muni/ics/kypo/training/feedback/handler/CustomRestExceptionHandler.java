@@ -44,7 +44,7 @@ import java.util.List;
 public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
 
     private static final UrlPathHelper URL_PATH_HELPER = new UrlPathHelper();
-    private static Logger LOG = LoggerFactory.getLogger(CustomRestExceptionHandler.class);
+    private static final Logger LOG = LoggerFactory.getLogger(CustomRestExceptionHandler.class);
 
     @Override
     protected ResponseEntity<Object> handleTypeMismatch(final TypeMismatchException ex, final HttpHeaders headers, final HttpStatus status,

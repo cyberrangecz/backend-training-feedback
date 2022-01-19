@@ -1,6 +1,5 @@
 package cz.muni.ics.kypo.training.feedback.service;
 
-import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionLevel;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.TrainingCommand;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.TrainingEvent;
 import cz.muni.ics.kypo.training.feedback.exceptions.EntityErrorDetail;
@@ -9,15 +8,12 @@ import cz.muni.ics.kypo.training.feedback.model.Command;
 import cz.muni.ics.kypo.training.feedback.model.Level;
 import cz.muni.ics.kypo.training.feedback.model.Trainee;
 import cz.muni.ics.kypo.training.feedback.repository.TraineeRepository;
-import cz.muni.ics.kypo.training.feedback.service.api.ElasticsearchServiceApi;
-import cz.muni.ics.kypo.training.feedback.service.graph.TraineeGraphService;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -77,7 +73,7 @@ public class TraineeService extends CRUDServiceImpl<Trainee, Long> {
                 .map(TrainingEvent::getTimestamp)
                 .findFirst()
                 .orElseThrow(() -> new EntityNotFoundException(new EntityErrorDetail(LocalDateTime.class,
-                        "Start time of the level (ID: " + levelId  + " has not been found.")));
+                        "Start time of the level (ID: " + levelId + " has not been found.")));
 
         Optional<LocalDateTime> levelEndTime = traineeLevelEvents.stream()
                 .filter(l -> l.getType().equals(LEVEL_COMPLETED))

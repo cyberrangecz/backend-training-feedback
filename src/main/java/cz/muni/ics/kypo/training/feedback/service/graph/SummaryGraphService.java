@@ -1,6 +1,5 @@
 package cz.muni.ics.kypo.training.feedback.service.graph;
 
-import cz.muni.ics.kypo.training.feedback.annotations.transactions.TransactionalWO;
 import cz.muni.ics.kypo.training.feedback.constants.GraphConstants;
 import cz.muni.ics.kypo.training.feedback.enums.GraphType;
 import cz.muni.ics.kypo.training.feedback.exceptions.EntityErrorDetail;
@@ -14,8 +13,6 @@ import cz.muni.ics.kypo.training.feedback.service.CRUDServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Isolation;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -48,7 +45,7 @@ public class SummaryGraphService extends CRUDServiceImpl<Graph, Long> {
                 .stream()
                 .filter(g -> g.getTrainee() != null)
                 .collect(Collectors.toList());
-        if(traineeGraphs.isEmpty()) {
+        if (traineeGraphs.isEmpty()) {
             return null;
         }
         Graph summaryGraph = initSummaryGraph(definitionId, instanceId);
@@ -156,9 +153,9 @@ public class SummaryGraphService extends CRUDServiceImpl<Graph, Long> {
         summaryGraph.setLabelLocation(referenceGraph.getLabelLocation());
         summaryGraph.setSubGraphs(referenceGraph.getSubGraphs().stream()
                 .map(subGraph -> {
-                        SubGraph clonedSubgraph = subGraph.clone();
-                        clonedSubgraph.setGraph(summaryGraph);
-                        return clonedSubgraph;
+                    SubGraph clonedSubgraph = subGraph.clone();
+                    clonedSubgraph.setGraph(summaryGraph);
+                    return clonedSubgraph;
                 }).collect(Collectors.toList())
         );
         return summaryGraph;

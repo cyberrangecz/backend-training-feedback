@@ -18,7 +18,6 @@ import lombok.RequiredArgsConstructor;
 import org.javatuples.Pair;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
@@ -36,13 +35,12 @@ public class TraineeGraphService extends CRUDServiceImpl<Graph, Long> {
     private final GraphRepository graphRepository;
     private final TraineeService traineeService;
     private final ElasticsearchServiceApi elasticsearchServiceApi;
+    private final List<String> achievedNodesLabels = new ArrayList<>();
 
     @Override
     public JpaRepository<Graph, Long> getDAO() {
         return graphRepository;
     }
-
-    private final List<String> achievedNodesLabels = new ArrayList<>();
 
     public Graph getTraineeGraph(Long trainingRunId) {
         Graph graph = graphRepository.findTraineeGraph(trainingRunId);

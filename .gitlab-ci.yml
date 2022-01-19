@@ -28,7 +28,7 @@ create_tag:
     - /app/prepare-git.sh
     - /app/set-version-java.sh
     # generate swagger documentation
-    - mvn clean compile $MAVEN_CLI_OPTS -DskipTests -Dswagger-doc.skip=false -Dproprietary-repo-url=$PROPRIETARY_REPO_URL
+    - mvn clean compile $MAVEN_CLI_OPTS -DskipTests -Dswagger.skip=false -Dproprietary-repo-url=$PROPRIETARY_REPO_URL
     - git add doc-files/kypo-training-feedback-swagger-open-api.yaml
     - git commit -m "Updated Swagger documentation generated"
     - /app/tag-and-push.sh

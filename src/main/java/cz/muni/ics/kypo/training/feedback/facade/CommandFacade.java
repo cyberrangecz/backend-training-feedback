@@ -1,6 +1,8 @@
 package cz.muni.ics.kypo.training.feedback.facade;
 
-import cz.muni.ics.kypo.training.feedback.dto.provider.*;
+import cz.muni.ics.kypo.training.feedback.dto.provider.AggregatedCommandsDTO;
+import cz.muni.ics.kypo.training.feedback.dto.provider.CommandDTO;
+import cz.muni.ics.kypo.training.feedback.dto.provider.CommandPerOptions;
 import cz.muni.ics.kypo.training.feedback.enums.MistakeType;
 import cz.muni.ics.kypo.training.feedback.mapping.CommandMapper;
 import cz.muni.ics.kypo.training.feedback.service.CommandService;
@@ -8,9 +10,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.*;
-
-import static java.util.stream.Collectors.groupingBy;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Service

@@ -1,6 +1,5 @@
 package cz.muni.ics.kypo.training.feedback.dto.provider;
 
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import cz.muni.ics.kypo.training.feedback.enums.MistakeType;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

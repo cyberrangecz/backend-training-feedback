@@ -3,8 +3,6 @@ package cz.muni.ics.kypo.training.feedback.model;
 import cz.muni.ics.kypo.training.feedback.constants.GraphConstants;
 import cz.muni.ics.kypo.training.feedback.enums.GraphType;
 import lombok.*;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -26,14 +24,14 @@ public class Graph {
     @Column(name = "graph_id", nullable = false, unique = true)
     private Long id;
     @OneToOne(optional = true,
-            cascade = { CascadeType.PERSIST , CascadeType.REMOVE },
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.EAGER)
     @JoinColumn(name = "trainee_id")
     private Trainee trainee;
     @NotEmpty
     @Builder.Default
     @OneToMany(mappedBy = "graph",
-            cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.EAGER)
     private List<SubGraph> subGraphs = new ArrayList<>();
 
