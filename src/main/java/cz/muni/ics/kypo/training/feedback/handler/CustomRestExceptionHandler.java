@@ -14,8 +14,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
-import org.springframework.security.access.AccessDeniedException;
-import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
@@ -154,16 +152,6 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
 
     // Handling of own exceptions
 
-    @ExceptionHandler({InsufficientAuthenticationException.class})
-    protected ResponseEntity<Object> handleAuthenticationException(final InsufficientAuthenticationException ex, final WebRequest request, HttpServletRequest req) {
-        final ApiError apiError = ApiError.of(
-                HttpStatus.UNAUTHORIZED,
-                ex.getMessage(),
-                getFullStackTrace(ex),
-                request.getContextPath());
-        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
-    }
-
     /**
      * Handle constraint violation response entity.
      *
@@ -252,24 +240,6 @@ public class CustomRestExceptionHandler extends ResponseEntityExceptionHandler {
                 getFullStackTrace(ex),
                 URL_PATH_HELPER.getRequestUri(req),
                 ex.getEntityErrorDetail());
-        return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
-    }
-
-    /**
-     * Handle spring access denied exception response entity.
-     *
-     * @param ex      the ex
-     * @param request the request
-     * @param req     the req
-     * @return the response entity
-     */
-    @ExceptionHandler({AccessDeniedException.class})
-    public ResponseEntity<Object> handleSpringAccessDeniedException(AccessDeniedException ex, WebRequest request, HttpServletRequest req) {
-        final ApiError apiError = ApiError.of(
-                HttpStatus.FORBIDDEN,
-                getInitialException(ex).getLocalizedMessage(),
-                getFullStackTrace(ex),
-                URL_PATH_HELPER.getRequestUri(req));
         return new ResponseEntity<>(apiError, new HttpHeaders(), apiError.getStatus());
     }
 

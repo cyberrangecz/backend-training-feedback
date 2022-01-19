@@ -34,8 +34,7 @@ public class TraineeRestController {
     })
     @GetMapping("/training-instances/{instanceId}")
     public ResponseEntity<List<TraineeDTO>> getTraineesByTrainingInstanceId(
-            @ApiParam(value = "ID of the training instance", required = true, type = "long")
-            @PathVariable Long instanceId
+            @ApiParam(value = "ID of the training instance", required = true) @PathVariable Long instanceId
     ) {
         return ResponseEntity.ok(traineeFacade.getTraineesByTrainingInstanceId(instanceId));
     }
@@ -53,7 +52,7 @@ public class TraineeRestController {
     })
     @GetMapping("/training-runs/{runId}")
     public ResponseEntity<TraineeDTO> getTraineeByTrainingRunId(
-            @ApiParam(value = "ID of the training run", required = true, type = "long") @PathVariable Long runId
+            @ApiParam(value = "ID of the training run", required = true) @PathVariable Long runId
     ) {
         return ResponseEntity.ok(traineeFacade.getTraineeByTrainingRunId(runId));
     }

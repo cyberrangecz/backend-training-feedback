@@ -33,7 +33,7 @@ public class GraphRestController {
     })
     @GetMapping("/training-definitions/{definitionId}")
     public ResponseEntity<GraphDTO> getReferenceGraph(
-            @ApiParam(value = "ID of the training definition.", required = true, type = "long") @PathVariable Long definitionId
+            @ApiParam(value = "ID of the training definition.", required = true) @PathVariable Long definitionId
     ) {
         return ResponseEntity.ok(graphFacade.getReferenceGraph(definitionId));
     }
@@ -51,7 +51,7 @@ public class GraphRestController {
     })
     @GetMapping("/training-runs/{runId}")
     public ResponseEntity<GraphDTO> getTraineeGraph(
-            @ApiParam(value = "ID of the training run.", required = true, type = "long") @PathVariable long runId
+            @ApiParam(value = "ID of the training run.", required = true) @PathVariable Long runId
     ) {
         return ResponseEntity.ok(graphFacade.getTraineeGraph(runId));
     }
@@ -69,7 +69,7 @@ public class GraphRestController {
     })
     @GetMapping("/training-instances/{instanceId}")
     public ResponseEntity<GraphDTO> getSummaryGraph(
-            @ApiParam(value = "Id of the training instance.", required = true, type = "long") @PathVariable Long instanceId
+            @ApiParam(value = "Id of the training instance.", required = true) @PathVariable Long instanceId
     ) {
         return ResponseEntity.ok(graphFacade.getSummaryGraph(instanceId));
     }
@@ -85,7 +85,7 @@ public class GraphRestController {
     })
     @PostMapping("/training-definitions/{definitionId}")
     public ResponseEntity<GraphDTO> createReferenceGraph(
-            @ApiParam(value = "ID of the training definition.", required = true, type = "long") @PathVariable Long definitionId,
+            @ApiParam(value = "ID of the training definition.", required = true) @PathVariable Long definitionId,
             @ApiParam(value = "Reference solutions of levels.") @RequestBody List<DefinitionLevel> definitionLevelList
     ) {
         return ResponseEntity.ok(graphFacade.createReferenceGraph(definitionId, definitionLevelList));
@@ -103,8 +103,8 @@ public class GraphRestController {
     })
     @PostMapping("/training-definitions/{definitionId}/training-instances/{instanceId}")
     public ResponseEntity<GraphDTO> createSummaryGraph(
-            @ApiParam(value = "ID of the training definition.", required = true, type = "long") @PathVariable Long definitionId,
-            @ApiParam(value = "ID of the training instance.", required = true, type = "long") @PathVariable Long instanceId
+            @ApiParam(value = "ID of the training definition.", required = true) @PathVariable Long definitionId,
+            @ApiParam(value = "ID of the training instance.", required = true) @PathVariable Long instanceId
     ) {
         return ResponseEntity.ok(graphFacade.createSummaryGraph(definitionId, instanceId));
     }
@@ -142,7 +142,7 @@ public class GraphRestController {
     })
     @DeleteMapping("/reference/training-definitions/{definitionId}")
     public ResponseEntity<GraphDTO> deleteReferenceGraph(
-            @ApiParam(value = "ID of the training definition.", required = true, type = "long") @PathVariable Long definitionId
+            @ApiParam(value = "ID of the training definition.", required = true) @PathVariable Long definitionId
     ) {
         graphFacade.deleteReferenceGraph(definitionId);
         return ResponseEntity.noContent().build();
@@ -159,7 +159,7 @@ public class GraphRestController {
     })
     @DeleteMapping("/training-instances/{instanceId}")
     public ResponseEntity<GraphDTO> deleteGraphsByTrainingInstance(
-            @ApiParam(value = "ID of the training instance.", required = true, type = "long") @PathVariable Long instanceId
+            @ApiParam(value = "ID of the training instance.", required = true) @PathVariable Long instanceId
     ) {
         graphFacade.deleteAllByTrainingInstance(instanceId);
         return ResponseEntity.noContent().build();
@@ -176,7 +176,7 @@ public class GraphRestController {
     })
     @DeleteMapping("/summary/training-instances/{instanceId}")
     public ResponseEntity<GraphDTO> deleteSummaryGraph(
-            @ApiParam(value = "ID of the training instance.", required = true, type = "long") @PathVariable Long instanceId
+            @ApiParam(value = "ID of the training instance.", required = true) @PathVariable Long instanceId
     ) {
         graphFacade.deleteSummaryGraph(instanceId);
         return ResponseEntity.noContent().build();
@@ -193,7 +193,7 @@ public class GraphRestController {
     })
     @DeleteMapping("/trainee/training-runs/{runId}")
     public ResponseEntity<GraphDTO> deleteTraineeGraph(
-            @ApiParam(value = "ID of the training instance.", required = true, type = "long") @PathVariable Long runId
+            @ApiParam(value = "ID of the training instance.", required = true) @PathVariable Long runId
     ) {
         graphFacade.deleteTraineeGraph(runId);
         return ResponseEntity.noContent().build();

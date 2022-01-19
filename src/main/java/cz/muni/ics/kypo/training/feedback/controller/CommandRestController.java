@@ -35,7 +35,7 @@ public class CommandRestController {
     })
     @GetMapping("/correct")
     public ResponseEntity<List<AggregatedCommandsDTO>> getAggregatedCorrectCommands(
-            @ApiParam(value = "The trainees training run ids", required = true, type = "List of numbers") @RequestParam List<Long> runIds
+            @ApiParam(value = "The trainees training run ids", required = true) @RequestParam List<Long> runIds
     ) {
         return ResponseEntity.ok(commandFacade.getAggregatedCorrectCommands(runIds));
     }
@@ -54,7 +54,7 @@ public class CommandRestController {
     })
     @GetMapping("/training-runs/{runId}")
     public ResponseEntity<List<CommandDTO>> getCommandsByTrainingRun(
-            @ApiParam(value = "The trainee's training run id", required = true, type = "long") @PathVariable long runId
+            @ApiParam(value = "The trainee's training run id", required = true) @PathVariable Long runId
     ) {
         return ResponseEntity.ok(commandFacade.getCommandsByTrainingRun(runId));
     }
@@ -73,8 +73,8 @@ public class CommandRestController {
     })
     @GetMapping("/training-runs/{runId}/levels/{levelId}")
     public ResponseEntity<List<CommandDTO>> getCommandsByTrainingRunAndLevel(
-            @ApiParam(value = "The trainee sandbox id", required = true, type = "long") @PathVariable long runId,
-            @ApiParam(value = "The trainees level id", required = true, type = "long") @PathVariable long levelId
+            @ApiParam(value = "The trainee sandbox id", required = true) @PathVariable Long runId,
+            @ApiParam(value = "The trainees level id", required = true) @PathVariable Long levelId
     ) {
         return ResponseEntity.ok(commandFacade.getCommandsByTrainingRunAndLevel(runId, levelId));
     }
@@ -92,8 +92,8 @@ public class CommandRestController {
     })
     @GetMapping("/incorrect")
     public ResponseEntity<List<AggregatedCommandsDTO>> getAggregatedIncorrectCommands(
-            @ApiParam(value = "The trainees sandbox ids", required = true, type = "List of numbers") @RequestParam List<Long> runIds,
-            @ApiParam(value = "Mistake types", required = true, type = "List of strings") @RequestParam List<MistakeType> mistakeTypes
+            @ApiParam(value = "The trainees sandbox ids", required = true) @RequestParam List<Long> runIds,
+            @ApiParam(value = "Mistake types", required = true) @RequestParam List<MistakeType> mistakeTypes
     ) {
         return ResponseEntity.ok(commandFacade.getAggregatedIncorrectCommands(runIds, mistakeTypes));
     }

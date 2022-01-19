@@ -27,10 +27,11 @@ paths:
         in: "query"
         description: "The trainees training run ids"
         required: true
-        type: "List of numbers"
+        type: "array"
         items:
           type: "integer"
           format: "int64"
+        collectionFormat: "multi"
       responses:
         200:
           description: "Aggregated correct commands have been found."
@@ -59,15 +60,16 @@ paths:
         in: "query"
         description: "The trainees sandbox ids"
         required: true
-        type: "List of numbers"
+        type: "array"
         items:
           type: "integer"
           format: "int64"
+        collectionFormat: "multi"
       - name: "mistakeTypes"
         in: "query"
         description: "Mistake types"
         required: true
-        type: "List of strings"
+        type: "array"
         items:
           type: "string"
           enum:
@@ -78,6 +80,7 @@ paths:
           - "SYNTAX_INVALID_OPTION_PARAM"
           - "SEMANTIC_UNKNOWN_IP"
           - "SEMANTIC_WRONG_IP"
+        collectionFormat: "multi"
       responses:
         200:
           description: "Trainees invalid commands have been found."
@@ -105,7 +108,7 @@ paths:
         in: "path"
         description: "The trainee's training run id"
         required: true
-        type: "long"
+        type: "integer"
         format: "int64"
       responses:
         200:
@@ -134,13 +137,13 @@ paths:
         in: "path"
         description: "The trainee sandbox id"
         required: true
-        type: "long"
+        type: "integer"
         format: "int64"
       - name: "levelId"
         in: "path"
         description: "The trainees level id"
         required: true
-        type: "long"
+        type: "integer"
         format: "int64"
       responses:
         200:
