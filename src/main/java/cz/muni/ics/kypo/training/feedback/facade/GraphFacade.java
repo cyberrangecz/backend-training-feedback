@@ -50,21 +50,21 @@ public class GraphFacade {
     }
 
     public void deleteReferenceGraph(Long definitionId) {
-        if(!referenceGraphService.existsReferenceGraph(definitionId)) {
+        if (!referenceGraphService.existsReferenceGraph(definitionId)) {
             throw new EntityNotFoundException(new EntityErrorDetail(Graph.class, "Reference graph for definition with id: " + definitionId + " not found."));
         }
         referenceGraphService.deleteReferenceGraph(definitionId);
     }
 
     public void deleteSummaryGraph(Long instanceId) {
-        if(!summaryGraphService.existsSummaryGraph(instanceId)) {
+        if (!summaryGraphService.existsSummaryGraph(instanceId)) {
             throw new EntityNotFoundException(new EntityErrorDetail(Graph.class, "Summary graph for instance with id: " + instanceId + " not found."));
         }
         summaryGraphService.deleteSummaryGraph(instanceId);
     }
 
     public void deleteTraineeGraph(Long runId) {
-        if(!traineeGraphService.existsTraineeGraph(runId)) {
+        if (!traineeGraphService.existsTraineeGraph(runId)) {
             throw new EntityNotFoundException(new EntityErrorDetail(Graph.class, "Trainee graph for run with id: " + runId + " not found."));
         }
         traineeGraphService.deleteTraineeGraph(runId);

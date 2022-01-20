@@ -11,8 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.reactive.function.client.ClientRequest;
@@ -86,18 +84,6 @@ public class WebClientConfig {
                         .build())
                 .build();
     }
-
-//    private ExchangeFilterFunction addSecurityHeader() {
-//        return (request, next) -> {
-//
-//            OAuth2AuthenticationToken authenticatedUser = (OAuth2AuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
-//            String accessToken = (String) authenticatedUser.getDetails();
-//            ClientRequest filtered = ClientRequest.from(request)
-//                    .header("Authorization", "Bearer " + accessToken)
-//                    .build();
-//            return next.exchange(filtered);
-//        };
-//    }
 
     private ExchangeFilterFunction addSecurityHeader() {
         return (request, next) -> {

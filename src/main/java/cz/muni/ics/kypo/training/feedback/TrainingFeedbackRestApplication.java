@@ -7,8 +7,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @SpringBootApplication
 @EnableTransactionManagement
 public class TrainingFeedbackRestApplication {
+
     public static void main(String[] args) {
         SpringApplication.run(TrainingFeedbackRestApplication.class, args);
     }
-
 }

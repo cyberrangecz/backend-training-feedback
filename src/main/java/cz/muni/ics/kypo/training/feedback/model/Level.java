@@ -32,7 +32,7 @@ public class Level {
     @Fetch(value = FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "level",
             targetEntity = Command.class,
-            cascade = { CascadeType.PERSIST, CascadeType.REMOVE },
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
             fetch = FetchType.LAZY)
     private List<Command> commands;
     @NotNull

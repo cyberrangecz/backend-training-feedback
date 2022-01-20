@@ -7,7 +7,10 @@ import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -34,8 +37,7 @@ public class TraineeRestController {
     })
     @GetMapping("/training-instances/{instanceId}")
     public ResponseEntity<List<TraineeDTO>> getTraineesByTrainingInstanceId(
-            @ApiParam(value = "ID of the training instance", required = true, type = "long")
-            @PathVariable Long instanceId
+            @ApiParam(value = "ID of the training instance", required = true) @PathVariable Long instanceId
     ) {
         return ResponseEntity.ok(traineeFacade.getTraineesByTrainingInstanceId(instanceId));
     }
@@ -53,7 +55,7 @@ public class TraineeRestController {
     })
     @GetMapping("/training-runs/{runId}")
     public ResponseEntity<TraineeDTO> getTraineeByTrainingRunId(
-            @ApiParam(value = "ID of the training run", required = true, type = "long") @PathVariable Long runId
+            @ApiParam(value = "ID of the training run", required = true) @PathVariable Long runId
     ) {
         return ResponseEntity.ok(traineeFacade.getTraineeByTrainingRunId(runId));
     }
