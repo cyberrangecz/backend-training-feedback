@@ -1,3 +1,4 @@
+1.0.5 Updated dependencies to the latest versions. Code cleanup. Configured multistage docker build to decrease the resulting image size. 
 1.0.4 Update log4j2 version to avoid CVE-2021-44228 vulnerability
 1.0.3 Bugfix - escape command options to prevent bad graph definition.
 1.0.2 Added SpringBoot Maven plugin to create executable .jar file.
