@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface CommandRepository extends JpaRepository<Command, Long>, CommandRepositoryCustom {
-    List<Command> findByLevelIdAndLevelTraineeTrainingRunId(Long trainingRunId, Long sandboxId);
+    List<Command> findByLevelIdAndLevelTraineeTrainingRunId(Long levelId, Long trainingRunId);
 
     List<Command> findByLevelTraineeTrainingRunIdOrderByTrainingTime(Long trainingRunId);
 

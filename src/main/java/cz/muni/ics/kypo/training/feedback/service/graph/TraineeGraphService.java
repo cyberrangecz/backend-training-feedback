@@ -64,27 +64,40 @@ public class TraineeGraphService extends CRUDServiceImpl<Graph, Long> {
         this.graphRepository.deleteByTrainingInstanceIdAndGraphType(instanceId, GraphType.TRAINEE_GRAPH);
     }
 
-    public Graph createTraineeGraph(Long definitionId, Long instanceId, Long runId,
-                                    List<DefinitionLevel> definitionLevels) {
+    public Graph createTraineeGraphLocalInstance(Long definitionId, Long instanceId, Long runId,
+                                            List<DefinitionLevel> definitionLevels, String accessToken) {
+        List<TrainingEvent> events = elasticsearchServiceApi.getTrainingEventsByTrainingRunId(definitionId, instanceId, runId);
+        Long userRefId = events.get(0).getUserRefId();
+        List<TrainingCommand> commands = elasticsearchServiceApi.getTrainingCommandsByAccessTokenAndUserId(accessToken, userRefId);
+        TraineeGraphInput inputData = new TraineeGraphInput(definitionId, instanceId, runId, null, userRefId, events, commands, definitionLevels);
+        return createTraineeGraph(inputData);
+
+    }
+    public Graph createTraineeGraphCloudInstance(Long definitionId, Long instanceId, Long runId,
+                                            List<DefinitionLevel> definitionLevels) {
         List<TrainingEvent> events = elasticsearchServiceApi.getTrainingEventsByTrainingRunId(definitionId, instanceId, runId);
         Long sandboxId = events.get(0).getSandboxId();
         List<TrainingCommand> commands = elasticsearchServiceApi.getTrainingCommandsBySandboxId(sandboxId);
+        TraineeGraphInput inputData = new TraineeGraphInput(definitionId, instanceId, runId, sandboxId, null, events, commands, definitionLevels);
+        return createTraineeGraph(inputData);
+    }
 
-        LocalDateTime trainingStartTime = events.get(0).getTimestamp();
-        commands.forEach(c -> c.setTrainingTime(Duration.between(trainingStartTime, c.getTimestamp())));
+    private Graph createTraineeGraph(TraineeGraphInput inputData) {
+        LocalDateTime trainingStartTime = inputData.events.get(0).getTimestamp();
+        inputData.commands.forEach(c -> c.setTrainingTime(Duration.between(trainingStartTime, c.getTimestamp())));
 
-        Trainee trainee = this.traineeService.createTraineeEntity(runId, events, commands);
+        Trainee trainee = this.traineeService.createTraineeEntity(inputData.runId, inputData.events, inputData.commands);
 
         Graph graph = Graph.builder()
                 .trainee(trainee)
-                .label(GraphConstants.TRAINEE_GRAPH_LABEL + sandboxId)
+                .label(GraphConstants.TRAINEE_GRAPH_LABEL + (inputData.sandboxId == null ? inputData.userRefId : inputData.sandboxId))
                 .graphType(GraphType.TRAINEE_GRAPH)
-                .trainingDefinitionId(definitionId)
-                .trainingInstanceId(instanceId)
+                .trainingDefinitionId(inputData.definitionId)
+                .trainingInstanceId(inputData.instanceId)
                 .build();
         trainee.setTraineeGraph(graph);
 
-        Map<Long, DefinitionLevel> definitionLevelById = definitionLevels.stream()
+        Map<Long, DefinitionLevel> definitionLevelById = inputData.definitionLevels.stream()
                 .collect(Collectors.toMap(DefinitionLevel::getLevelId, Function.identity()));
         for (Level level : trainee.getLevels()) {
             Node lastAchievedNode = getLastAchievedNode(graph);
@@ -327,5 +340,34 @@ public class TraineeGraphService extends CRUDServiceImpl<Graph, Long> {
             optionalNodesNames.remove(0);
         }
         return Pair.with(requiredNodesNames, optionalNodesNames);
+    }
+
+    private class TraineeGraphInput {
+        private Long definitionId;
+        private Long instanceId;
+        private Long runId;
+        private Long sandboxId;
+        private Long userRefId;
+        private List<TrainingEvent> events;
+        private List<TrainingCommand> commands;
+        private List<DefinitionLevel> definitionLevels;
+
+        public TraineeGraphInput(Long definitionId,
+                                 Long instanceId,
+                                 Long runId,
+                                 Long sandboxId,
+                                 Long userRefId,
+                                 List<TrainingEvent> events,
+                                 List<TrainingCommand> commands,
+                                 List<DefinitionLevel> definitionLevels) {
+            this.definitionId = definitionId;
+            this.instanceId = instanceId;
+            this.runId = runId;
+            this.sandboxId = sandboxId;
+            this.userRefId = userRefId;
+            this.events = events;
+            this.commands = commands;
+            this.definitionLevels = definitionLevels;
+        }
     }
 }

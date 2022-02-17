@@ -40,6 +40,6 @@ public class Trainee {
     @NotNull
     @Column(name = "user_ref_id", unique = true)
     private Long userRefId;
-    @Column(name = "sandbox_id", unique = true)
+    @Column(name = "sandbox_id")
     private Long sandboxId;
 }
