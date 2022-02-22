@@ -2,7 +2,7 @@ CREATE TABLE trainee (
                          trainee_id      bigserial    NOT NULL PRIMARY KEY,
                          training_run_id bigint       NOT NULL,
                          user_ref_id     bigint       NOT NULL,
-                         sandbox_id      bigint,
+                         sandbox_id      bigint       NOT NULL,
                          UNIQUE (training_run_id)
 );
 ALTER SEQUENCE trainee_trainee_id_seq RENAME TO trainee_id_seq;
@@ -17,7 +17,9 @@ CREATE TABLE graph (
     label_location          varchar(255)     NOT NULL,
     font_size               double precision NOT NULL,
     trainee_id              int8             NULL,
-    FOREIGN KEY (trainee_id) REFERENCES trainee
+    FOREIGN KEY (trainee_id) REFERENCES trainee,
+    UNIQUE (training_definition_id, trainee_id, graph_type)
+
 );
 ALTER SEQUENCE graph_graph_id_seq RENAME TO graph_id_seq;
 ALTER SEQUENCE graph_id_seq increment 50;
@@ -108,13 +110,5 @@ CREATE INDEX command_level_index ON command (level_id);
 CREATE INDEX edge_sub_graph_index ON edge (sub_graph_id);
 CREATE INDEX level_trainee_index ON level (trainee_id);
 CREATE INDEX mistake_type_index ON mistake (mistake_type);
-
--- THREE PARTIAL INDEXES FOR INDIVIDUAL GRAPH TYPES
--- REFERENCE GRAPH
-CREATE UNIQUE INDEX reference_graph_index ON graph (training_definition_id, graph_type)
-    WHERE graph.training_instance_id IS NULL AND trainee_id IS NULL;
--- SUMMARY GRAPH
-CREATE UNIQUE INDEX summary_graph_index ON graph (training_definition_id, training_instance_id, graph_type)
-    WHERE trainee_id IS NULL;
--- TRAINEE GRAPH
-CREATE UNIQUE INDEX trainee_graph_index ON graph (training_definition_id, training_instance_id, trainee_id, graph_type);
+CREATE UNIQUE INDEX trainee_sandbox_index ON trainee (sandbox_id);
+CREATE UNIQUE INDEX graph_index ON graph (training_definition_id, graph_type) WHERE trainee_id IS NULL;
