@@ -106,8 +106,9 @@ public class ReferenceGraphService extends CRUDServiceImpl<Graph, Long> {
                             .toNode(subgraph.getEdges().stream().
                                     filter(edge -> edge.getToNode().equals(node.getLabel()))
                                     .map(Edge::getFromNode)
-                                    .collect(Collectors.toList())
-                                    .get(0))
+                                    .findFirst()
+                                    .orElseThrow(() -> new EntityNotFoundException(new EntityErrorDetail("Cannot create a backward edge from the " +
+                                            "optional node (label: " + node.getLabel() + ") because there is no node from which the edge would lead to that node."))))
                             .subGraph(subgraph)
                             .build());
                 }
