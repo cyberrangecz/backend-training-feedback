@@ -21,17 +21,31 @@ public class ElasticsearchServiceApi {
     private static final Logger LOG = LoggerFactory.getLogger(ElasticsearchServiceApi.class);
     private final WebClient elasticsearchServiceWebClient;
 
-    public List<TrainingCommand> getTrainingCommands(Long poolId) {
+    public List<TrainingCommand> getTrainingCommandsByPool(Long poolId) {
         try {
             return elasticsearchServiceWebClient
                     .get()
-                    .uri("/pools/{poolId}", poolId)
+                    .uri("/training-platform-commands/pools/{poolId}", poolId)
                     .retrieve()
                     .bodyToMono(new ParameterizedTypeReference<List<TrainingCommand>>() {
                     })
                     .block();
         } catch (CustomWebClientException ex) {
             throw new MicroserviceApiException("Error when calling Elasticsearch API to get training commands for particular pool (ID: " + poolId + ").", ex);
+        }
+    }
+
+    public List<TrainingCommand> getTrainingCommandsByAccessToken(String accessToken) {
+        try {
+            return elasticsearchServiceWebClient
+                    .get()
+                    .uri("/training-platform-commands/access-tokens/{accessToken}", accessToken)
+                    .retrieve()
+                    .bodyToMono(new ParameterizedTypeReference<List<TrainingCommand>>() {
+                    })
+                    .block();
+        } catch (CustomWebClientException ex) {
+            throw new MicroserviceApiException("Error when calling Elasticsearch API to delete bash commands for particular training instance (access-token: " + accessToken +").", ex);
         }
     }
 
@@ -50,6 +64,25 @@ public class ElasticsearchServiceApi {
                     .collect(Collectors.toList());
         } catch (CustomWebClientException ex) {
             throw new MicroserviceApiException("Error when calling Elasticsearch API to get training commands for particular sandbox (ID: " + sandboxId + ").", ex);
+        }
+    }
+
+    public List<TrainingCommand> getTrainingCommandsByAccessTokenAndUserId(String accessToken, Long userId) {
+        try {
+            return elasticsearchServiceWebClient
+                    .get()
+                    .uri("/training-platform-commands/access-tokens/{accessToken}/users/{userId}", accessToken, userId)
+                    .retrieve()
+                    .bodyToMono(new ParameterizedTypeReference<List<TrainingCommand>>() {
+                    })
+                    .block()
+                    .stream()
+                    //some bug that lots of "empty" not valid command exist
+                    .filter(c -> c.getTimestamp() != null)
+                    .collect(Collectors.toList());
+        } catch (CustomWebClientException ex) {
+            throw new MicroserviceApiException("Error when calling Elasticsearch API for particular training " +
+                    "(access-token: " + accessToken +")" + "(user: " + userId +").", ex);
         }
     }
 

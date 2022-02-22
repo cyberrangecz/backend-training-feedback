@@ -45,8 +45,12 @@ public class GraphFacade {
         return graphMapper.mapGraphToGraphDTO(summaryGraphService.createSummaryGraph(definitionId, instanceId));
     }
 
-    public void createTraineeGraph(Long definitionId, Long instanceId, Long runId, List<DefinitionLevel> definitionLevels) {
-        traineeGraphService.createTraineeGraph(definitionId, instanceId, runId, definitionLevels);
+    public void createTraineeGraphLocalInstance(Long definitionId, Long instanceId, Long runId, List<DefinitionLevel> definitionLevels, String accessToken) {
+        traineeGraphService.createTraineeGraphLocalInstance(definitionId, instanceId, runId, definitionLevels, accessToken);
+    }
+
+    public void createTraineeGraphCloudInstance(Long definitionId, Long instanceId, Long runId, List<DefinitionLevel> definitionLevels) {
+        traineeGraphService.createTraineeGraphCloudInstance(definitionId, instanceId, runId, definitionLevels);
     }
 
     public void deleteReferenceGraph(Long definitionId) {

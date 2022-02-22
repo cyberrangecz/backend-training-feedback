@@ -4,8 +4,11 @@ import cz.muni.ics.kypo.training.feedback.dto.provider.GraphDTO;
 import cz.muni.ics.kypo.training.feedback.dto.resolver.DefinitionLevel;
 import cz.muni.ics.kypo.training.feedback.exceptions.errors.ApiError;
 import cz.muni.ics.kypo.training.feedback.facade.GraphFacade;
+import cz.muni.ics.kypo.training.feedback.service.MistakeAnalysisService;
 import io.swagger.annotations.*;
 import lombok.RequiredArgsConstructor;
+import org.junit.platform.commons.logging.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -125,9 +128,14 @@ public class GraphRestController {
             @ApiParam(value = "The training definition ID", required = true) @PathVariable Long definitionId,
             @ApiParam(value = "The training instance ID", required = true) @PathVariable Long instanceId,
             @ApiParam(value = "The trainee run ID", required = true) @PathVariable Long runId,
+            @ApiParam(value = "Access token of the training instance") @RequestParam(required = false) String accessToken,
             @ApiParam(value = "Reference solutions of levels", required = true) @RequestBody List<DefinitionLevel> definitionLevels
     ) {
-        graphFacade.createTraineeGraph(definitionId, instanceId, runId, definitionLevels);
+        if(accessToken != null) {
+            graphFacade.createTraineeGraphLocalInstance(definitionId, instanceId, runId, definitionLevels, accessToken);
+        } else {
+            graphFacade.createTraineeGraphCloudInstance(definitionId, instanceId, runId, definitionLevels);
+        }
         return ResponseEntity.noContent().build();
     }
 
