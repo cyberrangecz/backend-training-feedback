@@ -1,7 +1,7 @@
 ---
 swagger: "2.0"
 info:
-  version: "Version: 1.0.5"
+  version: "Version: 1.1.0"
   title: "KYPO Training Feedback Service - API Reference"
 host: "localhost:8087"
 basePath: "/kypo-training-feedback/api/v1"
@@ -363,6 +363,11 @@ paths:
         required: true
         type: "integer"
         format: "int64"
+      - name: "accessToken"
+        in: "query"
+        description: "Access token of the training instance"
+        required: false
+        type: "string"
       - in: "body"
         name: "body"
         description: "Reference solutions of levels"
