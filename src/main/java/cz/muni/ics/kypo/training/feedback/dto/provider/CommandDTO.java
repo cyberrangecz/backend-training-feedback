@@ -39,9 +39,10 @@ public class CommandDTO extends AbstractCommandDTO {
     private String options;
 
     @Builder
-    public CommandDTO(@NotEmpty String commandType, @NotEmpty String cmd, @Past @NotNull LocalDateTime timestamp, @NotEmpty String fromHostIp, @NotEmpty String options) {
+    public CommandDTO(@NotEmpty String commandType, @NotEmpty String cmd, @Past @NotNull LocalDateTime timestamp, @NotNull Duration trainingTime, @NotEmpty String fromHostIp, @NotEmpty String options) {
         super(commandType, cmd);
         this.timestamp = timestamp;
+        this.trainingTime = trainingTime;
         this.fromHostIp = fromHostIp;
         this.options = options;
     }
