@@ -1,3 +1,4 @@
+1.1.1 Bugfix - the value training time missed in the individual commands.
 1.1.0 Support creation of graphs for instances with the usage of local sandboxes. Throw an exception when cannot create a backward edge in the graph.
 1.0.5 Updated dependencies to the latest versions. Code cleanup. Configured multistage docker build to decrease the resulting image size. 
 1.0.4 Update log4j2 version to avoid CVE-2021-44228 vulnerability
