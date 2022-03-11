@@ -18,7 +18,7 @@
     </parent>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>17</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <swagger.version>3.0.0</swagger.version>
         <swagger-annotations.version>1.5.22</swagger-annotations.version>
