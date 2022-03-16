@@ -1,7 +1,7 @@
 ---
 swagger: "2.0"
 info:
-  version: "Version: 1.1.1"
+  version: "Version: 2.0.0"
   title: "KYPO Training Feedback Service - API Reference"
 host: "localhost:8087"
 basePath: "/kypo-training-feedback/api/v1"
@@ -798,14 +798,14 @@ definitions:
       nano:
         type: "integer"
         format: "int32"
+      negative:
+        type: "boolean"
+      zero:
+        type: "boolean"
       units:
         type: "array"
         items:
           $ref: "#/definitions/TemporalUnit"
-      zero:
-        type: "boolean"
-      negative:
-        type: "boolean"
   EntityErrorDetail:
     type: "object"
     properties:
