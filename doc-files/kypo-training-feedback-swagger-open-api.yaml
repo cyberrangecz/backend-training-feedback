@@ -1,7 +1,7 @@
 ---
 swagger: "2.0"
 info:
-  version: "Version: 1.1.1"
+  version: "Version: 2.0.0"
   title: "KYPO Training Feedback Service - API Reference"
 host: "localhost:8087"
 basePath: "/kypo-training-feedback/api/v1"
@@ -534,9 +534,9 @@ definitions:
     type: "object"
     required:
     - "cmd"
-    - "commandType"
+    - "command_type"
     properties:
-      commandType:
+      command_type:
         type: "string"
         example: "BASH"
         description: "Distinguish tool/command line  in which command ran."
@@ -550,7 +550,7 @@ definitions:
     - $ref: "#/definitions/AbstractCommandDTO"
     - type: "object"
       required:
-      - "aggregatedCommandsPerOptions"
+      - "aggregated_commands_per_options"
       - "frequency"
       properties:
         frequency:
@@ -559,7 +559,7 @@ definitions:
           example: 25
           description: "Count of all usages of same command regardless to command\
             \ options."
-        aggregatedCommandsPerOptions:
+        aggregated_commands_per_options:
           type: "array"
           example: "-vvv: 12, \n -a: 22"
           description: "List of incorrect commands with same command and command type"
@@ -571,7 +571,7 @@ definitions:
     - $ref: "#/definitions/ApiError"
     - type: "object"
       properties:
-        entityErrorDetail:
+        entity_error_detail:
           description: "Detail of the entity which is related to the error."
           $ref: "#/definitions/EntityErrorDetail"
       description: "A detailed error information related to the entity."
@@ -678,7 +678,7 @@ definitions:
     - $ref: "#/definitions/ApiError"
     - type: "object"
       properties:
-        apiSubError:
+        api_sub_error:
           description: "Detailed error from another microservice."
           $ref: "#/definitions/ApiSubError"
       description: "A detailed error information related to the microservice."
@@ -693,21 +693,21 @@ definitions:
     - $ref: "#/definitions/AbstractCommandDTO"
     - type: "object"
       required:
-      - "fromHostIp"
+      - "from_host_ip"
       - "options"
       - "timestamp"
-      - "trainingTime"
+      - "training_time"
       properties:
         timestamp:
           type: "string"
           format: "date-time"
           example: "07:23:43"
           description: "Time when command was recorded."
-        trainingTime:
+        training_time:
           example: "07:23:43"
           description: "Training time when command was recorded."
           $ref: "#/definitions/Duration"
-        fromHostIp:
+        from_host_ip:
           type: "string"
           example: "10.10.17.5"
           description: "Ip address where command was submitted."
@@ -720,9 +720,9 @@ definitions:
     type: "object"
     required:
     - "cmd"
-    - "commandType"
+    - "command_type"
     - "frequency"
-    - "fromHostIp"
+    - "from_host_ip"
     - "mistake"
     - "options"
     properties:
@@ -730,7 +730,7 @@ definitions:
         type: "string"
         example: "ls"
         description: "Command without arguments/options."
-      commandType:
+      command_type:
         type: "string"
         example: "BASH"
         description: "Distinguish tool/command line  in which command ran."
@@ -750,7 +750,7 @@ definitions:
         - "SYNTAX_INVALID_OPTION_PARAM"
         - "SEMANTIC_UNKNOWN_IP"
         - "SEMANTIC_WRONG_IP"
-      fromHostIp:
+      from_host_ip:
         type: "string"
         example: "10.10.17.5"
         description: "Ip address where command was submitted."
@@ -798,14 +798,14 @@ definitions:
       nano:
         type: "integer"
         format: "int32"
+      negative:
+        type: "boolean"
+      zero:
+        type: "boolean"
       units:
         type: "array"
         items:
           $ref: "#/definitions/TemporalUnit"
-      zero:
-        type: "boolean"
-      negative:
-        type: "boolean"
   EntityErrorDetail:
     type: "object"
     properties:
@@ -817,7 +817,7 @@ definitions:
         type: "string"
         example: "id"
         description: "Identifier of the entity."
-      identifierValue:
+      identifier_value:
         type: "object"
         example: "1"
         description: "Value of the identifier."
@@ -957,33 +957,33 @@ definitions:
   TemporalUnit:
     type: "object"
     properties:
-      dateBased:
+      date_based:
         type: "boolean"
-      timeBased:
+      time_based:
         type: "boolean"
       duration:
         $ref: "#/definitions/Duration"
-      durationEstimated:
+      duration_estimated:
         type: "boolean"
   TraineeDTO:
     type: "object"
     required:
-    - "trainingInstanceId"
-    - "trainingRunId"
-    - "userRefId"
+    - "training_instance_id"
+    - "training_run_id"
+    - "user_ref_id"
     properties:
-      trainingRunId:
+      training_run_id:
         type: "integer"
         format: "int64"
         example: 68
         description: "Id of the trainees training run."
-      trainingInstanceId:
+      training_instance_id:
         type: "integer"
         format: "int64"
         example: 12
         description: "Id of the training instance in which the training has been carried\
           \ out."
-      userRefId:
+      user_ref_id:
         type: "integer"
         format: "int64"
         example: 31
@@ -992,7 +992,7 @@ definitions:
         type: "string"
         example: "john.doe@mail.com"
         description: "Trainee's subject name."
-      fullName:
+      full_name:
         type: "string"
         example: "Mgr. John Doe"
         description: "Trainee's full name."
