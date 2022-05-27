@@ -92,6 +92,11 @@
             <artifactId>commons-text</artifactId>
             <version>${apache-commons.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.kongchen</groupId>
+            <artifactId>swagger-maven-plugin</artifactId>
+            <version>${github.kongchen.version}</version>
+        </dependency>
         <!--RUNTIME-->
         <dependency>
             <groupId>org.postgresql</groupId>
@@ -172,6 +177,7 @@
                             <swaggerDirectory>${swagger.directory}</swaggerDirectory>
                             <swaggerFileName>kypo-training-feedback-swagger-open-api</swaggerFileName>
                             <outputFormats>yaml</outputFormats>
+                            <swaggerApiReader>cz.muni.ics.kypo.training.feedback.utils.SnakeCaseSwaggerReader</swaggerApiReader>
                         </apiSource>
                     </apiSources>
                 </configuration>
