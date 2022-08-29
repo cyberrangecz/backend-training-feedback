@@ -1,3 +1,4 @@
+2.0.2 Removed stacktrace from errors.
 2.0.1 Change the configuration for swagger docs generation.
 2.0.0 Migrate project to Java 17.
 1.1.1 Bugfix - the value training time missed in the individual commands.
