@@ -17,7 +17,7 @@ import java.util.List;
 public class TrainingCommand {
 
     @JsonProperty("sandbox_id")
-    private Long sandboxId;
+    private String sandboxId;
 
     @NotNull
     private LocalDateTime timestamp;
