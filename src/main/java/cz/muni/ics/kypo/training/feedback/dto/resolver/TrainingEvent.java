@@ -15,7 +15,7 @@ public class TrainingEvent {
     private Long level;
 
     @JsonProperty("sandbox_id")
-    private Long sandboxId;
+    private String sandboxId;
 
     @JsonProperty("training_run_id")
     private Long trainingRunId;
