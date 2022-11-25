@@ -76,7 +76,7 @@ public class TraineeGraphService extends CRUDServiceImpl<Graph, Long> {
     public Graph createTraineeGraphCloudInstance(Long definitionId, Long instanceId, Long runId,
                                             List<DefinitionLevel> definitionLevels) {
         List<TrainingEvent> events = elasticsearchServiceApi.getTrainingEventsByTrainingRunId(definitionId, instanceId, runId);
-        Long sandboxId = events.get(0).getSandboxId();
+        String sandboxId = events.get(0).getSandboxId();
         List<TrainingCommand> commands = elasticsearchServiceApi.getTrainingCommandsBySandboxId(sandboxId);
         TraineeGraphInput inputData = new TraineeGraphInput(definitionId, instanceId, runId, sandboxId, null, events, commands, definitionLevels);
         return createTraineeGraph(inputData);
@@ -346,7 +346,7 @@ public class TraineeGraphService extends CRUDServiceImpl<Graph, Long> {
         private Long definitionId;
         private Long instanceId;
         private Long runId;
-        private Long sandboxId;
+        private String sandboxId;
         private Long userRefId;
         private List<TrainingEvent> events;
         private List<TrainingCommand> commands;
@@ -355,7 +355,7 @@ public class TraineeGraphService extends CRUDServiceImpl<Graph, Long> {
         public TraineeGraphInput(Long definitionId,
                                  Long instanceId,
                                  Long runId,
-                                 Long sandboxId,
+                                 String sandboxId,
                                  Long userRefId,
                                  List<TrainingEvent> events,
                                  List<TrainingCommand> commands,

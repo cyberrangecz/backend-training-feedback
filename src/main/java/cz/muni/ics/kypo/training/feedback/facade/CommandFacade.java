@@ -40,9 +40,9 @@ public class CommandFacade {
         return aggregatedCommandsDTOs;
     }
 
-    public List<AggregatedCommandsDTO> getAggregatedIncorrectCommands(List<Long> sandboxIds, List<MistakeType> mistakeTypes) {
+    public List<AggregatedCommandsDTO> getAggregatedIncorrectCommands(List<Long> trainingRunIds, List<MistakeType> mistakeTypes) {
         List<AggregatedCommandsDTO> aggregatedCommandsDTOs = new ArrayList<>();
-        Map<String, Map<String, List<CommandPerOptions>>> aggregatedIncorrectCommands = commandService.getAggregatedIncorrectCommandsByCmdTypeAndCmd(sandboxIds, mistakeTypes);
+        Map<String, Map<String, List<CommandPerOptions>>> aggregatedIncorrectCommands = commandService.getAggregatedIncorrectCommandsByCmdTypeAndCmd(trainingRunIds, mistakeTypes);
 
         for (var aggregatedByCmdType : aggregatedIncorrectCommands.entrySet())
             for (var aggregatedByCmd : aggregatedByCmdType.getValue().entrySet()) {

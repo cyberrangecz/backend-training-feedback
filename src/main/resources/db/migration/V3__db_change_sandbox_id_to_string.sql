@@ -1,0 +1,1 @@
+alter table trainee alter column sandbox_id type varchar (36);

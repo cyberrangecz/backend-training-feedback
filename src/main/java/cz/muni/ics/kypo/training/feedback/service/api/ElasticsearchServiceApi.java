@@ -49,7 +49,7 @@ public class ElasticsearchServiceApi {
         }
     }
 
-    public List<TrainingCommand> getTrainingCommandsBySandboxId(Long sandboxId) {
+    public List<TrainingCommand> getTrainingCommandsBySandboxId(String sandboxId) {
         try {
             return elasticsearchServiceWebClient
                     .get()
