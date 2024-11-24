@@ -2,13 +2,13 @@
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cz.muni.ics.kypo</groupId>
-    <artifactId>kypo-training-feedback</artifactId>
-    <name>training-feedback</name>
-    <version>22.12-rc.1</version>
-    <description>Automated feedback application for KYPO trainings</description>
+    
+    <groupId>cz.cyberrange.platform</groupId>
+    <artifactId>training-feedback</artifactId>
+    <name>CyberRangeCZ Platform Training Feedback</name>
+    <description>Automated feedback application for CyberRangeCZ Platform Training</description>
+    <version>0.0.1</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -29,6 +29,7 @@
         <javatuples.version>1.2</javatuples.version>
         <apache-commons.version>1.9</apache-commons.version>
         <org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
+        <lombok.version>1.18.36</lombok.version>
         <!-- added to avoid log4j2 vulnerability CVE-2021-44228 -->
         <log4j2.version>2.15.0</log4j2.version>
     </properties>
@@ -165,19 +166,19 @@
                         <apiSource>
                             <springmvc>true</springmvc>
                             <locations>
-                                <location>cz.muni.ics.kypo.training.feedback</location>
+                                <location>cz.cyberrange.platform.training.feedback</location>
                             </locations>
                             <schemes>http,https</schemes>
                             <host>localhost:8087</host>
-                            <basePath>/kypo-training-feedback/api/v1</basePath>
+                            <basePath>/training-feedback/api/v1</basePath>
                             <info>
-                                <title>KYPO Training Feedback Service - API Reference</title>
+                                <title>Training Feedback Service - API Reference</title>
                                 <version>Version: ${project.version}</version>
                             </info>
                             <swaggerDirectory>${swagger.directory}</swaggerDirectory>
-                            <swaggerFileName>kypo-training-feedback-swagger-open-api</swaggerFileName>
+                            <swaggerFileName>swagger-docs</swaggerFileName>
                             <outputFormats>yaml</outputFormats>
-                            <swaggerApiReader>cz.muni.ics.kypo.training.feedback.utils.SnakeCaseSwaggerReader</swaggerApiReader>
+                            <swaggerApiReader>cz.cyberrange.platform.training.feedback.utils.SnakeCaseSwaggerReader</swaggerApiReader>
                         </apiSource>
                     </apiSources>
                 </configuration>
