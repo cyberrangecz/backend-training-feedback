@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cz.muni.ics.kypo</groupId>
-    <artifactId>kypo-training-feedback</artifactId>
+    <groupId>cyberrangecz</groupId>
+    <artifactId>training-feedback</artifactId>
     <name>training-feedback</name>
     <version>22.12-rc.1</version>
     <description>Automated feedback application for KYPO trainings</description>
@@ -169,13 +169,13 @@
                             </locations>
                             <schemes>http,https</schemes>
                             <host>localhost:8087</host>
-                            <basePath>/kypo-training-feedback/api/v1</basePath>
+                            <basePath>/training-feedback/api/v1</basePath>
                             <info>
-                                <title>KYPO Training Feedback Service - API Reference</title>
+                                <title>Training Feedback Service - API Reference</title>
                                 <version>Version: ${project.version}</version>
                             </info>
                             <swaggerDirectory>${swagger.directory}</swaggerDirectory>
-                            <swaggerFileName>kypo-training-feedback-swagger-open-api</swaggerFileName>
+                            <swaggerFileName>training-feedback-swagger-open-api</swaggerFileName>
                             <outputFormats>yaml</outputFormats>
                             <swaggerApiReader>cz.muni.ics.kypo.training.feedback.utils.SnakeCaseSwaggerReader</swaggerApiReader>
                         </apiSource>

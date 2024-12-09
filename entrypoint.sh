@@ -37,4 +37,4 @@ do
     wait_for_it ${i}
 done
 
-exec java -Dspring.config.location=/app/etc/kypo-training-feedback.properties -jar /app/kypo-training-feedback.jar
+exec java -Dspring.config.location=/app/etc/$PROJECT_ARTIFACT_ID.properties -jar /app/$PROJECT_ARTIFACT_ID.jar
