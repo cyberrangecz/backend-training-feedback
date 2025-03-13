@@ -103,3 +103,12 @@ CREATE UNIQUE INDEX summary_graph_index ON graph (training_definition_id, traini
     WHERE trainee_id IS NULL;
 -- TRAINEE GRAPH
 CREATE UNIQUE INDEX trainee_graph_index ON graph (training_definition_id, training_instance_id, trainee_id, graph_type);
+
+CREATE SEQUENCE command_id_seq AS bigint INCREMENT 50 MINVALUE 1;
+CREATE SEQUENCE edge_id_seq AS bigint INCREMENT 50 MINVALUE 1;
+CREATE SEQUENCE graph_id_seq AS bigint INCREMENT 50 MINVALUE 1;
+CREATE SEQUENCE level_id_seq AS bigint INCREMENT 50 MINVALUE 1;
+CREATE SEQUENCE mistake_id_seq AS bigint INCREMENT 50 MINVALUE 1;
+CREATE SEQUENCE node_id_seq AS bigint INCREMENT 50 MINVALUE 1;
+CREATE SEQUENCE sub_graph_id_seq AS bigint INCREMENT 50 MINVALUE 1;
+CREATE SEQUENCE trainee_id_seq AS bigint INCREMENT 50 MINVALUE 1;
