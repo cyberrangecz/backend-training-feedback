@@ -23,4 +23,4 @@ jobs:
     with:
       MAVEN_CLI_OPTS: "-s etc/ci_settings.xml"
       IMAGE_NAME: "training-feedback"
-      VERSION_PATH: "etc/ci_settings.xml"
+      VERSION_PATH: "pom.xml"
