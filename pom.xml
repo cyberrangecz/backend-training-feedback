@@ -8,7 +8,7 @@
     <artifactId>training-feedback</artifactId>
     <name>CyberRangeCZ Platform Training Feedback</name>
     <description>Automated feedback application for CyberRangeCZ Platform Training</description>
-    <version>0.0.2</version>
+    <version>1.0.0</version>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -34,6 +34,13 @@
         <log4j2.version>2.15.0</log4j2.version>
     </properties>
 
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://github.com/cyberrangecz/backend-training-feedback/blob/master/LICENSE</url>
+        </license>
+    </licenses>
+    
     <dependencies>
         <!--SPRING BOOT STARTERS-->
         <dependency>
