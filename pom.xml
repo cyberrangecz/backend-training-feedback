@@ -4,11 +4,33 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>cz.cyberrange.platform</groupId>
+    <groupId>cz.cybersecurityhub.maven</groupId>
     <artifactId>training-feedback</artifactId>
     <name>CyberRangeCZ Platform Training Feedback</name>
     <description>Automated feedback application for CyberRangeCZ Platform Training</description>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
+
+    <url>https://github.com/cyberrangecz/backend-training-feedback</url>
+    <scm>
+        <url>https://github.com/cyberrangecz/backend-training-feedback</url>
+        <connection>scm:git:https://github.com/cyberrangecz/backend-training-feedback.git</connection>
+        <developerConnection>scm:git:git@github.com:cyberrangecz/backend-training-feedback.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Mário Murín</name>
+            <email>murin@cshub.cz</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>MIT</name>
+            <url>https://github.com/cyberrangecz/backend-training-feedback/blob/master/LICENSE</url>
+        </license>
+    </licenses>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -33,13 +55,6 @@
         <!-- added to avoid log4j2 vulnerability CVE-2021-44228 -->
         <log4j2.version>2.15.0</log4j2.version>
     </properties>
-
-    <licenses>
-        <license>
-            <name>MIT</name>
-            <url>https://github.com/cyberrangecz/backend-training-feedback/blob/master/LICENSE</url>
-        </license>
-    </licenses>
     
     <dependencies>
         <!--SPRING BOOT STARTERS-->
