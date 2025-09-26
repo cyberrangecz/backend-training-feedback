@@ -8,7 +8,7 @@
     <artifactId>training-feedback</artifactId>
     <name>CyberRangeCZ Platform Training Feedback</name>
     <description>Automated feedback application for CyberRangeCZ Platform Training</description>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 
     <url>https://github.com/cyberrangecz/backend-training-feedback</url>
     <scm>
@@ -222,6 +222,8 @@
                 <!-- later need to set score -->
                 <failBuildOnCVSS>11</failBuildOnCVSS>
                 <nvdApiKey>${env.NVD_API_TOKEN}</nvdApiKey>
+                <dataDirectory>${env.NVD_DATA_DIR}</dataDirectory>
+                <ossIndexServerId>ossindex</ossIndexServerId>
             </configuration>
             <executions>
                 <execution>
