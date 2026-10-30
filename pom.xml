@@ -8,7 +8,7 @@
     <artifactId>training-feedback</artifactId>
     <name>CyberRangeCZ Platform Training Feedback</name>
     <description>Automated feedback application for CyberRangeCZ Platform Training</description>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
 
     <url>https://github.com/cyberrangecz/backend-training-feedback</url>
     <scm>
@@ -216,11 +216,10 @@
             <plugin>
             <groupId>org.owasp</groupId>
             <artifactId>dependency-check-maven</artifactId>
-            <version>12.1.3</version>
+            <version>13.0.0</version>
             <configuration>
                 <skip>${skipChecks}</skip>
-                <!-- later need to set score -->
-                <failBuildOnCVSS>11</failBuildOnCVSS>
+                <failBuildOnCVSS>${env.FAIL_BUILD_ON_CVSS}</failBuildOnCVSS>
                 <nvdApiKey>${env.NVD_API_TOKEN}</nvdApiKey>
                 <dataDirectory>${env.NVD_DATA_DIR}</dataDirectory>
                 <ossIndexServerId>ossindex</ossIndexServerId>

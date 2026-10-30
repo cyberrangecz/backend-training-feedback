@@ -26,3 +26,6 @@ jobs:
       MAVEN_CLI_OPTS: ""
       IMAGE_NAME: "training-feedback"
       VERSION_PATH: "pom.xml"
+      JAVA_VERSION: "17"
+      FAIL_BUILD_ON_CVSS: "11"
+      publish_and_tag: ${{ github.event.inputs.confirm_action }}
